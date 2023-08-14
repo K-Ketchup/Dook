@@ -5,8 +5,12 @@
              x:Class="Dook.MainPage">
 
 
-    <maps:Map x:Name="bruh" MapType="Street"/>
+    <Map 
+        x:Name="mainmap" 
+        MapType="Street" 
+        IsShowingUser="true"
+        IsTrafficEnabled="True"/>
 
-    <!--xmlns:maps="clr-namespace:Microsoft.Maui.Controls.Maps;assembly=Microsoft.Maui.Controls.Maps"-->
 
 </ContentPage>
+    
