@@ -5,10 +5,8 @@
              x:Class="Dook.MainPage">
 
 
-    <!--This code seems to be the issue.-->
-    <Grid>
-        <maps:Map x:Name="Bruh"/>
-    </Grid> 
-   
+    <maps:Map x:Name="bruh" MapType="Street"/>
+
+    <!--xmlns:maps="clr-namespace:Microsoft.Maui.Controls.Maps;assembly=Microsoft.Maui.Controls.Maps"-->
 
 </ContentPage>
