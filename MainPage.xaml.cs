@@ -29,7 +29,14 @@ public partial class MainPage : ContentPage
         Debug.Print("Bruh");
     }
 
-
+    private async void OnMapLoaded(object sender, EventArgs e)
+    {
+        Location.IsVisible = false;
+        Location geoLocation = await Geolocation.GetLocationAsync();
+        Distance dist = Distance.FromMiles(20);
+        LocationsMap.MoveToRegion(MapSpan.FromCenterAndRadius(geoLocation, dist));
+        LocationsMap.IsVisible = true;
+    }
 }
 
 
