@@ -1,4 +1,6 @@
-﻿using Microsoft.Extensions.Logging;
+﻿using Dook.Services;
+using Dook.ViewModel;
+using Microsoft.Extensions.Logging;
 
 namespace Dook
 {
@@ -15,6 +17,10 @@ namespace Dook
                     fonts.AddFont("OpenSans-Semibold.ttf", "OpenSansSemibold");
                 })
                 .UseMauiMaps();
+
+            builder.Services.AddTransient<MainPage>();
+            builder.Services.AddSingleton<ReviewService>();
+            builder.Services.AddTransient<DetailViewModel>();
 
         #if DEBUG
             builder.Logging.AddDebug();

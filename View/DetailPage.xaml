@@ -17,10 +17,59 @@
             ItemsSource="{Binding Reviews}"
             SelectionMode="None"
             Grid.ColumnSpan="2">
-            
-            
+
+            <CollectionView.ItemTemplate>
+                <DataTemplate x:DataType="model:Review">
+                    <Grid 
+                        Padding="10">
+                        <Frame
+                            HeightRequest="125"
+                            Style="{StaticResource CardView}">
+                            <Grid
+                                Padding="0"
+                                ColumnDefinitions="125,*">
+                                <!--<Image
+                                    Aspect="AspectFill"
+                                    Source="{Binding Image}"
+                                    WidthRequest="125"
+                                    HeightRequest="125"/>-->
+                                <StackLayout
+                                    Grid.Column="1"
+                                    Padding="10"
+                                    VerticalOptions="Center">
+                                    <Label
+                                        Style="{StaticResource LargeLabel}" 
+                                        Text="{Binding Username}"/>
+                                    <Label
+                                        Style="{StaticResource MediumLabel}"
+                                        Text="{Binding Text}"/>
+                                    <Label
+                                        Style="{StaticResource MediumLabel}"
+                                        Text="{Binding Stars}"/>
+                                </StackLayout>
+
+                            </Grid>
+                        </Frame>
+                    </Grid>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
         </CollectionView>
 
-        
+        <Button 
+            Text="Get Reviews"
+            Command="{Binding GetReviewsCommand}"
+            IsEnabled="{Binding IsNotBusy}"
+            Grid.Row="1"
+            Grid.Column="0"
+            Style="{StaticResource ButtonOutLine}"
+            Margin="8"/>
+
+        <ActivityIndicator
+            IsVisible="{Binding IsBusy}"
+            IsRunning="{Binding IsBusy}"
+            HorizontalOptions="FillAndExpand"
+            VerticalOptions="CenterAndExpand"
+            Grid.RowSpan="2"
+            Grid.ColumnSpan="2"/>
     </Grid>
 </ContentPage>
