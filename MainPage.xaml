@@ -11,20 +11,9 @@
         MapType="Street" 
         IsShowingUser="true"
         IsTrafficEnabled="True">
+        
 
-        <x:Arguments>
-            <MapSpan>
-                <x:Arguments>
-                    <sensors:Location>
-                        <x:Arguments>
-
-                        </x:Arguments>
-                    </sensors:Location>
-                    <x:Double>0.01</x:Double>
-                    <x:Double>0.01</x:Double>
-                </x:Arguments>
-            </MapSpan>
-        </x:Arguments>
+        
     </Map>  
 
 
