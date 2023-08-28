@@ -1,20 +1,34 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:viewmodel="clr-namespace:Dook.ViewModel"
+             x:DataType="viewmodel:MainViewModel"
              xmlns:maps="clr-namespace:Microsoft.Maui.Controls.Maps;assembly=Microsoft.Maui.Controls.Maps"
              xmlns:sensors="clr-namespace:Microsoft.Maui.Devices.Sensors;assembly=Microsoft.Maui.Essentials"
-             x:Class="Dook.MainPage">
+             x:Class="Dook.MainPage"
+             Title="{Binding Title}">
 
 
-    <Map
-        x:Name="mainmap" 
-        MapType="Street" 
-        IsShowingUser="true"
-        IsTrafficEnabled="True">
+    <VerticalStackLayout
+        Margin="5">
+        <Map
+            x:Name="mainmap" 
+            MapType="Street" 
+            IsShowingUser="true"
+            IsTrafficEnabled="True">
+        </Map>
+
+        <Button
+            Text="Get Reviews"
+            Command="{Binding GetCurrentLocationCommand}"
+            IsEnabled="{Binding IsNotBusy}"
+            Style="{StaticResource ButtonOutLine}"
+            Margin="8"/>
+
+        <Label
+            Text="{Binding currentLocation}"/>
         
-
-        
-    </Map>  
+    </VerticalStackLayout>
 
 
 </ContentPage>
