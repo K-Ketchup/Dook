@@ -8,12 +8,12 @@ namespace Dook.ViewModel
 {
     public partial class MainViewModel : BaseViewModel
     {
-        public string currentLocation;
+        public string currentLocation { get; set; }
         public Command GetCurrentLocationCommand { get; }
         public MainViewModel()
         {
             Title = "Map Controller";
-            GetCurrentLocationCommand = new Command(async () => await GetCurrentLocationAsync());
+            GetCurrentLocationCommand = new Command(async () => await GetTextAsync());
         }
 
         async Task GetCurrentLocationAsync()
@@ -27,6 +27,26 @@ namespace Dook.ViewModel
                 Location location = await Geolocation.Default.GetLastKnownLocationAsync();
                 if (location != null)
                     currentLocation = $"Latitude: {location.Latitude}, Longitude: {location.Longitude}, Altitude: {location.Altitude}";
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine($"Unable to get current location: {ex.Message}");
+                await Application.Current.MainPage.DisplayAlert("Error!", ex.Message, "OK");
+            }
+            finally
+            {
+                IsBusy = false;
+            }
+        }
+        async Task GetTextAsync()
+        {
+            if (IsBusy)
+                return;
+
+            try
+            {
+                IsBusy = true;
+                currentLocation="bruh";
             }
             catch (Exception ex)
             {

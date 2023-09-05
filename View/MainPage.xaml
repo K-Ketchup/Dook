@@ -11,23 +11,20 @@
 
     <VerticalStackLayout
         Margin="5">
-        <Map
+        <!--<Map
             x:Name="mainmap" 
             MapType="Street" 
             IsShowingUser="true"
             IsTrafficEnabled="True">
-        </Map>
+        </Map>-->
 
         <Button
-            Text="Get Reviews"
+            Text="{Binding currentLocation}"
             Command="{Binding GetCurrentLocationCommand}"
             IsEnabled="{Binding IsNotBusy}"
             Style="{StaticResource ButtonOutLine}"
-            Margin="8"/>
+            Margin="0"/>
 
-        <Label
-            Text="{Binding currentLocation}"/>
-        
     </VerticalStackLayout>
 
 
