@@ -19,11 +19,17 @@
         </Map>-->
 
         <Button
-            Text="{Binding currentLocation}"
+            Text="bruh"
             Command="{Binding GetCurrentLocationCommand}"
             IsEnabled="{Binding IsNotBusy}"
-            Style="{StaticResource ButtonOutLine}"
+            Clicked="Button_Clicked"
             Margin="0"/>
+
+        <Label
+            x:Name="Binding Test"
+            VerticalOptions="End"
+            />
+        
 
     </VerticalStackLayout>
 

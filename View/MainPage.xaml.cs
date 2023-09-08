@@ -9,24 +9,12 @@ public partial class MainPage : ContentPage
 
 	public MainPage()
 	{
-        GetLocation();
         InitializeComponent();
     }
 
-    private async void GetLocation()
+    private void Button_Clicked(object sender, EventArgs e)
     {
-        Location location = await Geolocation.GetLocationAsync(new GeolocationRequest
-        {
-            DesiredAccuracy = GeolocationAccuracy.High,
-            Timeout = TimeSpan.FromSeconds(30)
-        });
-        if(location != null)
-        {
-            MapSpan mapSpan = new MapSpan(location, 0.01, 0.01);
-            Map map = new Map(mapSpan);
-        }
-
-        Debug.Print("Bruh");
+        Debug.WriteLine("Bruh");
     }
 }
 

@@ -8,7 +8,7 @@ namespace Dook.ViewModel
 {
     public partial class MainViewModel : BaseViewModel
     {
-        public string currentLocation { get; set; }
+        public string currentLocation { get; }
         public Command GetCurrentLocationCommand { get; }
         public MainViewModel()
         {
@@ -16,17 +16,17 @@ namespace Dook.ViewModel
             GetCurrentLocationCommand = new Command(async () => await GetTextAsync());
         }
 
-        async Task GetCurrentLocationAsync()
+        public async Task<string> GetCurrentLocationAsync()
         {
             if (IsBusy)
-                return;
+                return null;
 
             try
             {
                 IsBusy = true;
                 Location location = await Geolocation.Default.GetLastKnownLocationAsync();
                 if (location != null)
-                    currentLocation = $"Latitude: {location.Latitude}, Longitude: {location.Longitude}, Altitude: {location.Altitude}";
+                    return $"Latitude: {location.Latitude}, Longitude: {location.Longitude}, Altitude: {location.Altitude}";
             }
             catch (Exception ex)
             {
@@ -37,16 +37,19 @@ namespace Dook.ViewModel
             {
                 IsBusy = false;
             }
+
+            return null;
         }
-        async Task GetTextAsync()
+
+        public async Task<string> GetTextAsync()
         {
             if (IsBusy)
-                return;
+                return null;
 
             try
             {
                 IsBusy = true;
-                currentLocation="bruh";
+                return "bruh";
             }
             catch (Exception ex)
             {
@@ -57,6 +60,8 @@ namespace Dook.ViewModel
             {
                 IsBusy = false;
             }
+
+            return null;
         }
     }
 }

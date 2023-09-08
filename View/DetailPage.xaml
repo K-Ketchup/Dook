@@ -61,7 +61,6 @@
             IsEnabled="{Binding IsNotBusy}"
             Grid.Row="1"
             Grid.Column="0"
-            Style="{StaticResource ButtonOutLine}"
             Margin="8"/>
 
         <ActivityIndicator
