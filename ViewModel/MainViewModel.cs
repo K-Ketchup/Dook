@@ -8,25 +8,30 @@ namespace Dook.ViewModel
 {
     public partial class MainViewModel : BaseViewModel
     {
-        public string currentLocation { get; }
+        public double CurrentLocationLatitude { get; set; } = -118.37253108273849;
+        public double CurrentLocationLongitude { get; set; } = 33.7705078125;
+        public static Location CurrentLocation { get; set; }
         public Command GetCurrentLocationCommand { get; }
         public MainViewModel()
         {
             Title = "Map Controller";
-            GetCurrentLocationCommand = new Command(async () => await GetTextAsync());
+            GetCurrentLocationCommand = new Command(async () => await GetLocationAsync());
         }
 
-        public async Task<string> GetCurrentLocationAsync()
+        public async Task GetLocationAsync()
         {
             if (IsBusy)
-                return null;
+                return;
 
             try
             {
                 IsBusy = true;
-                Location location = await Geolocation.Default.GetLastKnownLocationAsync();
-                if (location != null)
-                    return $"Latitude: {location.Latitude}, Longitude: {location.Longitude}, Altitude: {location.Altitude}";
+                CurrentLocation = await Geolocation.Default.GetLastKnownLocationAsync();
+                if (CurrentLocation != null)
+                {
+                    CurrentLocationLatitude = CurrentLocation.Latitude;
+                    CurrentLocationLongitude = CurrentLocation.Longitude;
+                }
             }
             catch (Exception ex)
             {
@@ -37,31 +42,6 @@ namespace Dook.ViewModel
             {
                 IsBusy = false;
             }
-
-            return null;
-        }
-
-        public async Task<string> GetTextAsync()
-        {
-            if (IsBusy)
-                return null;
-
-            try
-            {
-                IsBusy = true;
-                return "bruh";
-            }
-            catch (Exception ex)
-            {
-                Debug.WriteLine($"Unable to get current location: {ex.Message}");
-                await Application.Current.MainPage.DisplayAlert("Error!", ex.Message, "OK");
-            }
-            finally
-            {
-                IsBusy = false;
-            }
-
-            return null;
         }
     }
 }

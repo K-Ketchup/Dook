@@ -18,9 +18,9 @@ namespace Dook
                 })
                 .UseMauiMaps();
 
-            builder.Services.AddSingleton<MainPage>();
-            builder.Services.AddTransient<ReviewService>();
-            builder.Services.AddTransient<DetailViewModel>();
+            //builder.Services.AddTransient<MainPage>();
+            //builder.Services.AddTransient<ReviewService>();
+            //builder.Services.AddTransient<DetailViewModel>();
 
         #if DEBUG
             builder.Logging.AddDebug();
