@@ -7,7 +7,6 @@ using Dook.ViewModel;
 
 public partial class MainPage : ContentPage
 {
-    public ViewModel.MainViewModel mvm = new ViewModel.MainViewModel();
 	public MainPage()
 	{
         InitializeComponent();

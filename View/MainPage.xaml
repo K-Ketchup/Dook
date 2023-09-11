@@ -16,10 +16,11 @@
         Margin="5">
 
         <Map
-        x:Name="mainmap" 
-        MapType="Street" 
-        IsShowingUser="true"
-        IsTrafficEnabled="True">
+            x:Name="mainmap" 
+            MapType="Street" 
+            IsShowingUser="true"
+            IsTrafficEnabled="True"
+            x:FieldModifier="Public">
         </Map>
 
         <Button
