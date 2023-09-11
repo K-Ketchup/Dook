@@ -20,22 +20,6 @@
         MapType="Street" 
         IsShowingUser="true"
         IsTrafficEnabled="True">
-
-            <x:Arguments>
-                <MapSpan>
-                    <x:Arguments>
-                        <sensors:Location>
-                            <x:Arguments>
-                                <x:Double>{Binding CurrentLocationLatitude}</x:Double>
-                                <x:Double>{Binding CurrentLocationLongitude}</x:Double>
-                            </x:Arguments>
-                        </sensors:Location>
-                        <x:Double>0.01</x:Double>
-                        <x:Double>0.01</x:Double>
-                    </x:Arguments>
-                </MapSpan>
-            </x:Arguments>
-
         </Map>
 
         <Button
@@ -52,13 +36,13 @@
             Margin="0"
             VerticalOptions="Center"
             HorizontalOptions="Center"/>
-          <Button
-      Text="{Binding CurrentLocationLatitude}"
-      Command="{Binding GetCurrentLocationCommand}"
-      IsEnabled="{Binding IsNotBusy}"
-      Margin="0"
-      VerticalOptions="Center"
-      HorizontalOptions="Center"/>
+        <Button
+            Text="movemap"
+            Clicked="Button_Clicked" 
+            IsEnabled="{Binding IsNotBusy}"
+            Margin="0"
+            VerticalOptions="Center"
+            HorizontalOptions="Center"/>
     </StackLayout>
 
 

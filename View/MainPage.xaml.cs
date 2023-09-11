@@ -7,14 +7,21 @@ using Dook.ViewModel;
 
 public partial class MainPage : ContentPage
 {
-
+    public ViewModel.MainViewModel mvm = new ViewModel.MainViewModel();
 	public MainPage()
 	{
         InitializeComponent();
+        Location location = new(33.7705078125, -118.3725310827384);
+        MapSpan mapspan = new(location, 0.01, 0.01);
+        mainmap.MoveToRegion(mapspan);
+    }
 
-        MapSpan mapSpan = new(MainViewModel.CurrentLocation, 0.1, 0.1);
-        mainmap.MoveToRegion(mapSpan);
 
+    private void Button_Clicked(object sender, EventArgs e)
+    {
+        Location location = new(33.7705078125, -118.3725310827384);
+        MapSpan mapspan = new(location, 0.01, 0.01);
+        mainmap.MoveToRegion(mapspan);
     }
 }
 

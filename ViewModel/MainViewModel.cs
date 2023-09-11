@@ -8,9 +8,9 @@ namespace Dook.ViewModel
 {
     public partial class MainViewModel : BaseViewModel
     {
-        public double CurrentLocationLatitude { get; set; } = -118.37253108273849;
-        public double CurrentLocationLongitude { get; set; } = 33.7705078125;
-        public static Location CurrentLocation { get; set; }
+        public double CurrentLocationLatitude { get; set; } = 33.7705078125;
+        public double CurrentLocationLongitude { get; set; } = -118.37253108273849;
+        public Location CurrentLocation { get; set; }
         public Command GetCurrentLocationCommand { get; }
         public MainViewModel()
         {
