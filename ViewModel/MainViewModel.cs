@@ -74,5 +74,11 @@ namespace Dook.ViewModel
                 IsBusy = false;
             }
         }
+
+        public static async Task<Location> GetLocationTestAsync()
+        {
+            await Task.Delay(10000);
+            return Geolocation.Default.GetLastKnownLocationAsync().Result;
+        }
     }
 }

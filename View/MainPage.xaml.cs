@@ -10,17 +10,21 @@ public partial class MainPage : ContentPage
 	public MainPage()
 	{
         InitializeComponent();
-        Location location = new(33.7705078125, -118.3725310827384);
-        MapSpan mapspan = new(location, 0.01, 0.01);
-        mainmap.MoveToRegion(mapspan);
+        
+        MainViewModel mainViewModel = new MainViewModel();
+        MapSpan mapSpan = new MapSpan(mainViewModel.GetLocationAsync(), 0.01, 0.01);
+        Map map = new Map(mapSpan)
+        {
+            MapType = MapType.Street,
+        };
     }
 
 
     private void Button_Clicked(object sender, EventArgs e)
     {
-        Location location = new(33.7705078125, -118.3725310827384);
-        MapSpan mapspan = new(location, 0.01, 0.01);
-        mainmap.MoveToRegion(mapspan);
+        //Location location = MainViewModel.GetLocationTestAsync();
+        //MapSpan mapspan = new(location, 0.01, 0.01);
+        //mainmap.MoveToRegion(mapspan);
     }
 }
 
