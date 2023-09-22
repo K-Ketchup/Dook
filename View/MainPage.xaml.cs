@@ -11,8 +11,8 @@ public partial class MainPage : ContentPage
 	{
         InitializeComponent();
         
-        MainViewModel mainViewModel = new MainViewModel();
-        MapSpan mapSpan = new MapSpan(mainViewModel.GetLocationAsync(), 0.01, 0.01);
+        MainViewModel mainViewModel = new();
+        MapSpan mapSpan = new MapSpan(MainViewModel.GetLocationTest(), 0.01, 0.01);
         Map map = new Map(mapSpan)
         {
             MapType = MapType.Street,

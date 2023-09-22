@@ -75,9 +75,8 @@ namespace Dook.ViewModel
             }
         }
 
-        public static async Task<Location> GetLocationTestAsync()
+        public static Location GetLocationTest()
         {
-            await Task.Delay(10000);
             return Geolocation.Default.GetLastKnownLocationAsync().Result;
         }
     }
