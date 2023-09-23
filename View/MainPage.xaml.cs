@@ -7,23 +7,24 @@ using Dook.ViewModel;
 
 public partial class MainPage : ContentPage
 {
+    private Location currentLocation;
 	public MainPage()
 	{
         InitializeComponent();
-       
-        MapSpan mapSpan = new MapSpan(MainViewModel.GetLocationTest(), 0.01, 0.01);
-        Map map = new Map(mapSpan)
-        {
-            MapType = MapType.Street,
-        };
+        MoveMapLocation();
     }
 
 
     private void Button_Clicked(object sender, EventArgs e)
     {
-        //Location location = MainViewModel.GetLocationTestAsync();
-        //MapSpan mapspan = new(location, 0.01, 0.01);
-        //mainmap.MoveToRegion(mapspan);
+        MoveMapLocation();
+    }
+
+    private void MoveMapLocation()
+    {
+        currentLocation = MainViewModel.GetLocation();
+        MapSpan mapSpan = new MapSpan(currentLocation, 0.01, 0.01);
+        mainmap.MoveToRegion(mapSpan);
     }
 }
 

@@ -15,20 +15,14 @@
     <StackLayout
         Margin="5">
 
-        <Button
-            Text="{Binding CurrentLocationLongitude}"
-            Command="{Binding GetCurrentLocationCommand}"
-            IsEnabled="{Binding IsNotBusy}"
-            Margin="0"
-            VerticalOptions="Center"
-            HorizontalOptions="Center"/>
-        <Button
-            Text="{Binding CurrentLocationLongitude}"
-            Command="{Binding GetCurrentLocationCommand}"
-            IsEnabled="{Binding IsNotBusy}"
-            Margin="0"
-            VerticalOptions="Center"
-            HorizontalOptions="Center"/>
+        <Map
+            x:Name="mainmap"
+            MapType="Street"
+            IsShowingUser="True"
+            x:FieldModifier="public">
+            
+        </Map>
+
         <Button
             Text="movemap"
             Clicked="Button_Clicked" 
