@@ -11,8 +11,7 @@ namespace Dook.ViewModel
 {
     public partial class MainViewModel : BaseViewModel
     {
-        public Command GetCurrentLocationCommand { get; }
-        public Command MoveMapCommand { get; }
+        //public Command MoveMapCommand { get; }
         public MainViewModel()
         {
             Title = "Map Controller";
@@ -42,5 +41,26 @@ namespace Dook.ViewModel
                 
             //return null;
         }
+
+        //async Task MoveMapAsync(Map map)
+        //{
+        //    if (IsBusy)
+        //        return;
+
+        //    try
+        //    {
+        //        IsBusy = true;
+        //        map.MoveToRegion(new MapSpan(Geolocation.Default.GetLastKnownLocationAsync().Result, 0.1, 0.1));
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        Debug.WriteLine($"Unable to relocate map: {ex.Message}");
+        //        await Application.Current.MainPage.DisplayAlert("Error!", ex.Message, "OK");
+        //    }
+        //    finally
+        //    {
+        //        IsBusy = false;
+        //    }
+        //}
     }
 }

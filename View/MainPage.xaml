@@ -6,7 +6,8 @@
              xmlns:maps="clr-namespace:Microsoft.Maui.Controls.Maps;assembly=Microsoft.Maui.Controls.Maps"
              xmlns:sensors="clr-namespace:Microsoft.Maui.Devices.Sensors;assembly=Microsoft.Maui.Essentials"
              x:Class="Dook.MainPage"
-             Title="{Binding Title}">
+             Title="{Binding Title}"
+             Shell.NavBarIsVisible="False">
 
     <ContentPage.BindingContext>
         <viewmodel:MainViewModel />
@@ -15,21 +16,56 @@
     <StackLayout
         Margin="5">
 
-        <Map
+        <Map    
             x:Name="mainmap"
             MapType="Street"
             IsShowingUser="True"
             x:FieldModifier="public">
-            
         </Map>
 
-        <Button
-            Text="movemap"
-            Clicked="Button_Clicked" 
-            IsEnabled="{Binding IsNotBusy}"
-            Margin="0"
-            VerticalOptions="Center"
-            HorizontalOptions="Center"/>
+        <AbsoluteLayout>
+            <ImageButton
+                Source="feather_navigation_icon.png"
+                Aspect="AspectFill"
+                Clicked="Button_Clicked" 
+                IsEnabled="{Binding IsNotBusy}"
+                Margin="0"
+                VerticalOptions="Center"
+                HorizontalOptions="End"
+                WidthRequest="5"
+                HeightRequest="5"
+                BackgroundColor="Transparent"
+                CornerRadius="10"
+                AbsoluteLayout.LayoutBounds="320, -50"/>
+        </AbsoluteLayout>
+        
+        <Grid
+            Margin="5"
+            RowDefinitions="Auto"
+            ColumnDefinitions="*, *"
+            ColumnSpacing="0">
+
+            <Button
+                Text="Bruh"
+                IsEnabled="{Binding IsNotBusy}"
+                Margin="0"
+                VerticalOptions="Center"
+                HorizontalOptions="Center"/>
+                
+            <ImageButton
+                Source="feather_navigation_icon.png"
+                BorderWidth="5"
+                Aspect="AspectFill"
+                Clicked="Button_Clicked" 
+                IsEnabled="{Binding IsNotBusy}"
+                Margin="0"
+                VerticalOptions="Center"
+                HorizontalOptions="End"
+                WidthRequest="10"
+                HeightRequest="10"
+                BackgroundColor="Transparent"
+                CornerRadius="10"/>
+        </Grid>
     </StackLayout>
 
 
