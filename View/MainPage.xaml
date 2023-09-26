@@ -13,37 +13,30 @@
         <viewmodel:MainViewModel />
     </ContentPage.BindingContext>
 
-    <StackLayout
-        Margin="5">
+    <Grid
+        Margin="0"
+        RowDefinitions="*, Auto"
+        ColumnDefinitions="*">
+
 
         <Map    
             x:Name="mainmap"
             MapType="Street"
             IsShowingUser="True"
-            x:FieldModifier="public">
+            x:FieldModifier="public"
+            HorizontalOptions="CenterAndExpand"
+            VerticalOptions="CenterAndExpand"
+            Grid.Row="0">
         </Map>
 
-        <AbsoluteLayout>
-            <ImageButton
-                Source="feather_navigation_icon.png"
-                Aspect="AspectFill"
-                Clicked="Button_Clicked" 
-                IsEnabled="{Binding IsNotBusy}"
-                Margin="0"
-                VerticalOptions="Center"
-                HorizontalOptions="End"
-                WidthRequest="5"
-                HeightRequest="5"
-                BackgroundColor="Transparent"
-                CornerRadius="10"
-                AbsoluteLayout.LayoutBounds="320, -50"/>
-        </AbsoluteLayout>
-        
         <Grid
             Margin="5"
             RowDefinitions="Auto"
             ColumnDefinitions="*, *"
-            ColumnSpacing="0">
+            ColumnSpacing="0"
+            Grid.Row="0"
+            VerticalOptions="End"
+            HorizontalOptions="Center">
 
             <Button
                 Text="Bruh"
@@ -66,7 +59,7 @@
                 BackgroundColor="Transparent"
                 CornerRadius="10"/>
         </Grid>
-    </StackLayout>
+    </Grid>
 
 
 </ContentPage>
