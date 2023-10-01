@@ -18,7 +18,6 @@
         RowDefinitions="*, Auto"
         ColumnDefinitions="*">
 
-
         <Map    
             x:Name="mainmap"
             MapType="Street"
