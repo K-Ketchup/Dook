@@ -13,7 +13,7 @@
         <viewmodel:MainViewModel />
     </ContentPage.BindingContext>
 
-    <Grid
+    <!--<Grid
         Margin="0"
         RowDefinitions="*, Auto"
         ColumnDefinitions="*">
@@ -43,7 +43,7 @@
                 Margin="0"
                 VerticalOptions="Center"
                 HorizontalOptions="Center"/>
-                
+
             <ImageButton
                 Source="feather_navigation_icon.png"
                 BorderWidth="5"
@@ -58,7 +58,21 @@
                 BackgroundColor="Transparent"
                 CornerRadius="10"/>
         </Grid>
-    </Grid>
+    </Grid>-->
+
+    <VerticalStackLayout>
+        <Map    
+           x:Name="mainmap"
+           MapType="Street"
+           IsShowingUser="True"
+           x:FieldModifier="public"
+           HorizontalOptions="CenterAndExpand"
+           VerticalOptions="CenterAndExpand">
+        </Map>
+
+        <maps:Map
+            x:Name="Bruh"/>
+    </VerticalStackLayout>
 
 
 </ContentPage>
