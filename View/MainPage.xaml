@@ -27,7 +27,8 @@
             VerticalOptions="FillAndExpand"
             IsVisible="True"
             IsEnabled="True"
-            Grid.Row="0">
+            Grid.Row="0"
+            MapClicked="OnMapClicked">
 
         </maps:Map>
 

@@ -14,6 +14,18 @@ public partial class MainPage : ContentPage
         MoveMapLocation();
     }
 
+    private void OnMapClicked(object sender, MapClickedEventArgs e)
+    {
+        Pin pin = new Pin
+        {
+            Label="Test Pin",
+            Address="Kenshos House",
+            Type=PinType.Generic,
+            Location = new Location(e.Location.Latitude, e.Location.Longitude)
+        };
+
+        mainmap.Pins.Add(pin);
+    }
 
     private void Button_Clicked(object sender, EventArgs e)
     {
