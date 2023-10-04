@@ -32,8 +32,10 @@ public partial class MainPage : ContentPage
         MoveMapLocation();
     }
 
+
     private void MoveMapLocation()
     {
+        //Function to avoid boilerplate code
         currentLocation = MainViewModel.GetLocation();
         MapSpan mapSpan = new MapSpan(currentLocation, 0.01, 0.01);
         mainmap.MoveToRegion(mapSpan);
