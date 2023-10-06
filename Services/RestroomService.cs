@@ -48,8 +48,8 @@ namespace Dook.Services
         {
             await Init();
 
-            var review = await db.Table<Restroom>().ToListAsync();
-            return review;
+            var restroom = await db.Table<Restroom>().ToListAsync();
+            return restroom;
         }
     }
 }

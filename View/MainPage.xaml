@@ -5,6 +5,7 @@
              x:DataType="viewmodel:MainViewModel"
              xmlns:maps="clr-namespace:Microsoft.Maui.Controls.Maps;assembly=Microsoft.Maui.Controls.Maps"
              xmlns:sensors="clr-namespace:Microsoft.Maui.Devices.Sensors;assembly=Microsoft.Maui.Essentials"
+             xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
              x:Class="Dook.MainPage"
              Title="{Binding Title}"
              Shell.NavBarIsVisible="False">
@@ -12,6 +13,12 @@
     <ContentPage.BindingContext>
         <viewmodel:MainViewModel />
     </ContentPage.BindingContext>
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <toolkit:SelectedItemEventArgsConverter x:Key="SelectedItemEventArgsConverter"/>
+        </ResourceDictionary>
+    </ContentPage.Resources>
 
     <Grid
         Margin="0"
@@ -32,9 +39,11 @@
 
         </maps:Map>
 
+        
         <Button
-            Text="Bruh"
+            Text="Add"
             IsEnabled="{Binding IsNotBusy}"
+            Command="{Binding AddCommand}"
             Margin="5"
             VerticalOptions="Center"
             HorizontalOptions="Center"
