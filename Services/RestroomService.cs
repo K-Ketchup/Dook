@@ -11,6 +11,7 @@ namespace Dook.Services
     public static class RestroomService
     {
         static SQLiteAsyncConnection db;
+
         static async Task Init()
         {
             if(db != null) 
@@ -19,7 +20,7 @@ namespace Dook.Services
             //Get an absolute path to the database file
             var databasePath = Path.Combine(FileSystem.AppDataDirectory, "MyData.db");
 
-            var db = new SQLiteAsyncConnection(databasePath);
+            db = new SQLiteAsyncConnection(databasePath);
 
             await db.CreateTableAsync<Restroom>();
         }

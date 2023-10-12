@@ -6,15 +6,57 @@ using System.Threading.Tasks;
 using Microsoft.Maui.Controls.Maps;
 using Microsoft.Maui.Maps;
 using Map = Microsoft.Maui.Controls.Maps.Map;
+using Dook.Model;
+using Dook.Services;
+using MvvmHelpers;
+using MvvmHelpers.Commands;
 
 namespace Dook.ViewModel
 {
     public partial class MainViewModel : BaseViewModel
     {
-        //public Command MoveMapCommand { get; }
+        public ObservableRangeCollection<Restroom> Restroom { get; set; }
+        public AsyncCommand RefreshCommand { get; }
+        public AsyncCommand AddCommand { get; }
+        public AsyncCommand<Restroom> RemoveCommand { get; }
+
         public MainViewModel()
         {
             Title = "Map Controller";
+
+            Restroom = new ObservableRangeCollection<Restroom>();
+
+            AddCommand = new AsyncCommand(Add);
+            RemoveCommand = new AsyncCommand<Restroom>(Remove);
+            RefreshCommand = new AsyncCommand(Refresh);
+        }
+
+        async Task Add()
+        {
+            var name = await App.Current.MainPage.DisplayPromptAsync("Location Name", "Name of Location");
+            Location location = GetLocation();
+            var address = "Latitude: {location.Latitude}, Longitude: {location.Longitude}, Altitude: {location.Altitude}";
+            var username = await App.Current.MainPage.DisplayPromptAsync("Username", "Username of Toilet Adder");
+            await RestroomService.AddPin(name, address, username);
+            await Refresh();
+
+
+        }
+        
+        async Task Remove(Restroom restroom)
+        {
+            await RestroomService.RemovePin(restroom.Id);
+            await Refresh();
+        }
+
+        async Task Refresh()
+        {
+            IsBusy = true;
+            await Task.Delay(2000);
+            Restroom.Clear();
+            var restrooms = await RestroomService.GetPin();
+            Restroom.AddRange(restrooms);
+            IsBusy = false;
         }
 
         public static Location GetLocation()
@@ -33,34 +75,6 @@ namespace Dook.ViewModel
             }
 
             return null;
-
-            //Location location = new();
-            //location = Geolocation.Default.GetLastKnownLocationAsync().Result;
-            //if (location != null)
-            //    return location;
-                
-            //return null;
         }
-
-        //async Task MoveMapAsync(Map map)
-        //{
-        //    if (IsBusy)
-        //        return;
-
-        //    try
-        //    {
-        //        IsBusy = true;
-        //        map.MoveToRegion(new MapSpan(Geolocation.Default.GetLastKnownLocationAsync().Result, 0.1, 0.1));
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        Debug.WriteLine($"Unable to relocate map: {ex.Message}");
-        //        await Application.Current.MainPage.DisplayAlert("Error!", ex.Message, "OK");
-        //    }
-        //    finally
-        //    {
-        //        IsBusy = false;
-        //    }
-        //}
     }
 }
