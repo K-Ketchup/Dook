@@ -15,7 +15,7 @@ namespace Dook.ViewModel
 {
     public partial class MainViewModel : BaseViewModel
     {
-        public ObservableRangeCollection<Restroom> Restroom { get; set; }
+        public static ObservableRangeCollection<Restroom> Restroom { get; set; }
         public AsyncCommand RefreshCommand { get; }
         public AsyncCommand AddCommand { get; }
         public AsyncCommand<Restroom> RemoveCommand { get; }
@@ -26,21 +26,18 @@ namespace Dook.ViewModel
 
             Restroom = new ObservableRangeCollection<Restroom>();
 
-            AddCommand = new AsyncCommand(Add);
+            AsyncCommand<Location> addCommand = new AsyncCommand<Location>(Add);
             RemoveCommand = new AsyncCommand<Restroom>(Remove);
             RefreshCommand = new AsyncCommand(Refresh);
         }
 
-        async Task Add()
+        async Task Add(Location location)
         {
             var name = await App.Current.MainPage.DisplayPromptAsync("Location Name", "Name of Location");
-            Location location = GetLocation();
             var address = "Latitude: {location.Latitude}, Longitude: {location.Longitude}, Altitude: {location.Altitude}";
             var username = await App.Current.MainPage.DisplayPromptAsync("Username", "Username of Toilet Adder");
-            await RestroomService.AddPin(name, address, username);
+            await RestroomService.AddPin(name, address, username, location);
             await Refresh();
-
-
         }
         
         async Task Remove(Restroom restroom)

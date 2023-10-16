@@ -25,14 +25,15 @@ namespace Dook.Services
             await db.CreateTableAsync<Restroom>();
         }
 
-        public static async Task AddPin(string name, string address, string username)
+        public static async Task AddPin(string name, string address, string username, Location location)
         {
             await Init();
             var restroom = new Restroom
             {
                 Name = name,
                 Address = address,
-                Username = username
+                Username = username,
+                PinLocation = location
             };
 
             var id = await db.InsertAsync(restroom);

@@ -14,12 +14,6 @@
         <viewmodel:MainViewModel />
     </ContentPage.BindingContext>
 
-    <ContentPage.Resources>
-        <ResourceDictionary>
-            <toolkit:SelectedItemEventArgsConverter x:Key="SelectedItemEventArgsConverter"/>
-        </ResourceDictionary>
-    </ContentPage.Resources>
-
     <Grid
         Margin="0"
         RowDefinitions="*, Auto"
@@ -49,10 +43,20 @@
             HorizontalOptions="Center"
             Grid.Row="1"/>
 
+        <Button
+            Text="Refresh"
+            IsEnabled="{Binding IsNotBusy}"
+            Clicked="RefreshButton_Clicked"
+            Margin="5"
+            VerticalOptions="Center"
+            HorizontalOptions="Start"
+            Grid.Row="1"/>
+
+
         <ImageButton
             Source="feather_navigation_icon.png"
             Aspect="AspectFill"
-            Clicked="Button_Clicked" 
+            Clicked="GoToLocation_Button" 
             IsEnabled="{Binding IsNotBusy}"
             Margin="20"
             VerticalOptions="End"
