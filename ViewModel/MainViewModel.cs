@@ -15,18 +15,18 @@ namespace Dook.ViewModel
 {
     public partial class MainViewModel : BaseViewModel
     {
-        public static ObservableRangeCollection<Restroom> Restroom { get; set; }
+        public static List<Restroom> Restroom { get; set; }
         public AsyncCommand RefreshCommand { get; }
-        public AsyncCommand AddCommand { get; }
+        public AsyncCommand<Location> AddCommand { get; }
         public AsyncCommand<Restroom> RemoveCommand { get; }
 
         public MainViewModel()
         {
             Title = "Map Controller";
 
-            Restroom = new ObservableRangeCollection<Restroom>();
+            Restroom = new List<Restroom>();
 
-            AsyncCommand<Location> addCommand = new AsyncCommand<Location>(Add);
+            AddCommand = new AsyncCommand<Location>(Add);
             RemoveCommand = new AsyncCommand<Restroom>(Remove);
             RefreshCommand = new AsyncCommand(Refresh);
         }
@@ -60,7 +60,7 @@ namespace Dook.ViewModel
         {
             try
             {
-                Location location = new ();
+                Location location = new();
                 location = Geolocation.Default.GetLastKnownLocationAsync().Result;
                 if (location != null)
                     return location;
