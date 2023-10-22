@@ -46,20 +46,9 @@ public partial class MainPage : ContentPage
 
     private void RefreshPins()
     {
-        for (int i = 0; i < MainViewModel.Restroom.Count; i++)
-        {
-            Restroom rt = MainViewModel.Restroom[i];
+        var viewModel = new MainViewModel();
 
-            Pin pin = new Pin
-            {
-                Label = rt.Name,
-                Address = rt.Address,
-                Type = PinType.Generic,
-                Location = new Location(rt.PinLocation)
-            };
-
-            mainmap.Pins.Add(pin);
-        }
+        viewModel.RefreshCommand.ExecuteAsync();
     }
 }
 

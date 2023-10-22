@@ -15,7 +15,7 @@ namespace Dook.ViewModel
 {
     public partial class MainViewModel : BaseViewModel
     {
-        public static List<Restroom> Restroom { get; set; }
+        public static ObservableRangeCollection<Restroom> Restroom { get; set; }
         public AsyncCommand RefreshCommand { get; }
         public AsyncCommand<Location> AddCommand { get; }
         public AsyncCommand<Restroom> RemoveCommand { get; }
@@ -24,18 +24,19 @@ namespace Dook.ViewModel
         {
             Title = "Map Controller";
 
-            Restroom = new List<Restroom>();
+            Restroom = new ObservableRangeCollection<Restroom>();
 
             AddCommand = new AsyncCommand<Location>(Add);
             RemoveCommand = new AsyncCommand<Restroom>(Remove);
             RefreshCommand = new AsyncCommand(Refresh);
         }
 
-        async Task Add(Location location)
+        async Task Add(Location pinlocation)
         {
             var name = await App.Current.MainPage.DisplayPromptAsync("Location Name", "Name of Location");
-            var address = "Latitude: {location.Latitude}, Longitude: {location.Longitude}, Altitude: {location.Altitude}";
+            var address = "Latitude: {pinlocation.Latitude}, Longitude: {pinlocation.Longitude}, Altitude: {location.Altitude}";
             var username = await App.Current.MainPage.DisplayPromptAsync("Username", "Username of Toilet Adder");
+            Location location = pinlocation;
             await RestroomService.AddPin(name, address, username, location);
             await Refresh();
         }
