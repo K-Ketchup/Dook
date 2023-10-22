@@ -25,15 +25,11 @@ namespace Dook.ViewModel
         {
             Title = "Map Controller";
 
-            //MainThread.BeginInvokeOnMainThread(async () =>
-            //{
-            //    var restroom1 = await RestroomService.GetPin().Result;
-            //    Restroom = restroom1 as ObservableRangeCollection<Restroom>;
-            //});
 
-            //Restroom = new ObservableRangeCollection<Restroom>();
+                //var restroom1 = RestroomService.GetPin().Result;
+                //Restroom = restroom1 as ObservableRangeCollection<Restroom>;
 
-            MainThread.BeginInvokeOnMainThread(async () => Restroom = (ObservableRangeCollection<Restroom>)(await RestroomService.GetPin()).ToObservableCollection());
+            Restroom = new ObservableRangeCollection<Restroom>();
 
             AddCommand = new AsyncCommand<Location>(Add);
             RemoveCommand = new AsyncCommand<Restroom>(Remove);
@@ -47,6 +43,7 @@ namespace Dook.ViewModel
             var address = "bruh chungus ave";
             var username = await App.Current.MainPage.DisplayPromptAsync("Username", "Username of Toilet Adder");
             Location location = pinlocation;
+            if(name == null || address == null || username == null) { return; }
             await RestroomService.AddPin(name, address, username, location);
             await Refresh();
         }
