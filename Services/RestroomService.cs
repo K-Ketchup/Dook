@@ -12,7 +12,7 @@ namespace Dook.Services
     {
         static SQLiteAsyncConnection db;
 
-        static async Task Init()
+        static async Task InitAsync()
         {
             if(db != null) 
                 return;
@@ -25,9 +25,9 @@ namespace Dook.Services
             await db.CreateTableAsync<Restroom>();
         }
 
-        public static async Task AddPin(string name, string address, string username, Location location)
+        public static async Task AddPinAsync(string name, string address, string username, Location location)
         {
-            await Init();
+            await InitAsync();
             var wa = "wa";
             var restroom = new Restroom
             {
@@ -40,16 +40,16 @@ namespace Dook.Services
             var id = await db.InsertAsync(restroom);
         }
 
-        public static async Task RemovePin(int id)
+        public static async Task RemovePinAsync(int id)
         {
-            await Init();
+            await InitAsync();
 
             await db.DeleteAsync<Restroom>(id);
         }
 
-        public static async Task<IEnumerable<Restroom>> GetPin()
+        public static async Task<IEnumerable<Restroom>> GetPinAsync()
         {
-            await Init();
+            await InitAsync();
 
             var restroom = await db.Table<Restroom>().ToListAsync();
             return restroom;

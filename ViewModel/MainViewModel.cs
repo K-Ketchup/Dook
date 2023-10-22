@@ -31,12 +31,12 @@ namespace Dook.ViewModel
 
             Restroom = new ObservableRangeCollection<Restroom>();
 
-            AddCommand = new AsyncCommand<Location>(Add);
-            RemoveCommand = new AsyncCommand<Restroom>(Remove);
-            RefreshCommand = new AsyncCommand(Refresh);
+            AddCommand = new AsyncCommand<Location>(AddAsync);
+            RemoveCommand = new AsyncCommand<Restroom>(RemoveAsync);
+            RefreshCommand = new AsyncCommand(RefreshAsync);
         }
 
-        async Task Add(Location pinlocation)
+        async Task AddAsync(Location pinlocation)
         {
             var name = await App.Current.MainPage.DisplayPromptAsync("Location Name", "Name of Location");
            // var address = "Latitude: {pinlocation.Latitude}, Longitude: {pinlocation.Longitude}, Altitude: {location.Altitude}";
@@ -44,22 +44,22 @@ namespace Dook.ViewModel
             var username = await App.Current.MainPage.DisplayPromptAsync("Username", "Username of Toilet Adder");
             Location location = pinlocation;
             if(name == null || address == null || username == null) { return; }
-            await RestroomService.AddPin(name, address, username, location);
-            await Refresh();
+            await RestroomService.AddPinAsync(name, address, username, location);
+            await RefreshAsync();
         }
         
-        async Task Remove(Restroom restroom)
+        async Task RemoveAsync(Restroom restroom)
         {
-            await RestroomService.RemovePin(restroom.Id);
-            await Refresh();
+            await RestroomService.RemovePinAsync(restroom.Id);
+            await RefreshAsync();
         }
 
-        async Task Refresh()
+        async Task RefreshAsync()
         {
             IsBusy = true;
             await Task.Delay(2000);
             Restroom.Clear();
-            var restrooms = await RestroomService.GetPin();
+            var restrooms = await RestroomService.GetPinAsync();
             Restroom.AddRange(restrooms);
             IsBusy = false;
         }
