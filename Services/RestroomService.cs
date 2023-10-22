@@ -23,6 +23,7 @@ namespace Dook.Services
             db = new SQLiteAsyncConnection(databasePath);
 
             await db.CreateTableAsync<Restroom>();
+            var wa = "wa";
         }
 
         public static async Task AddPinAsync(string name, string address, string username, Location location)

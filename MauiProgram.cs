@@ -1,4 +1,5 @@
-﻿using Dook.Services;
+﻿using CommunityToolkit.Maui;
+using Dook.Services;
 using Dook.ViewModel;
 using Microsoft.Extensions.Logging;
 
@@ -11,6 +12,7 @@ namespace Dook
             var builder = MauiApp.CreateBuilder();
             builder
                 .UseMauiApp<App>()
+                .UseMauiCommunityToolkit()
                 .ConfigureFonts(fonts =>
                 {
                     fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
