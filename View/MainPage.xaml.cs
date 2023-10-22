@@ -24,12 +24,7 @@ public partial class MainPage : ContentPage
         var viewModel = new MainViewModel();
 
         if(viewModel.AddCommand.CanExecute(e.Location)) 
-        {
             viewModel.AddCommand.ExecuteAsync(e.Location);
-        }
-
-        RefreshPins();
-
     }
 
     private void RefreshButton_Clicked(object sender, EventArgs e)

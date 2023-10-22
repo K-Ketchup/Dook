@@ -28,6 +28,7 @@ namespace Dook.Services
         public static async Task AddPin(string name, string address, string username, Location location)
         {
             await Init();
+            var wa = "wa";
             var restroom = new Restroom
             {
                 Name = name,

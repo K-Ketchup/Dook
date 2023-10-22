@@ -10,12 +10,13 @@ using Dook.Model;
 using Dook.Services;
 using MvvmHelpers;
 using MvvmHelpers.Commands;
+using CommunityToolkit.Maui.Core.Extensions;
 
 namespace Dook.ViewModel
 {
     public partial class MainViewModel : BaseViewModel
     {
-        public static ObservableRangeCollection<Restroom> Restroom { get; set; }
+        public ObservableRangeCollection<Restroom> Restroom { get; set; }
         public AsyncCommand RefreshCommand { get; }
         public AsyncCommand<Location> AddCommand { get; }
         public AsyncCommand<Restroom> RemoveCommand { get; }
@@ -24,7 +25,15 @@ namespace Dook.ViewModel
         {
             Title = "Map Controller";
 
-            Restroom = new ObservableRangeCollection<Restroom>();
+            //MainThread.BeginInvokeOnMainThread(async () =>
+            //{
+            //    var restroom1 = await RestroomService.GetPin().Result;
+            //    Restroom = restroom1 as ObservableRangeCollection<Restroom>;
+            //});
+
+            //Restroom = new ObservableRangeCollection<Restroom>();
+
+            MainThread.BeginInvokeOnMainThread(async () => Restroom = (ObservableRangeCollection<Restroom>)(await RestroomService.GetPin()).ToObservableCollection());
 
             AddCommand = new AsyncCommand<Location>(Add);
             RemoveCommand = new AsyncCommand<Restroom>(Remove);
@@ -34,7 +43,8 @@ namespace Dook.ViewModel
         async Task Add(Location pinlocation)
         {
             var name = await App.Current.MainPage.DisplayPromptAsync("Location Name", "Name of Location");
-            var address = "Latitude: {pinlocation.Latitude}, Longitude: {pinlocation.Longitude}, Altitude: {location.Altitude}";
+           // var address = "Latitude: {pinlocation.Latitude}, Longitude: {pinlocation.Longitude}, Altitude: {location.Altitude}";
+            var address = "bruh chungus ave";
             var username = await App.Current.MainPage.DisplayPromptAsync("Username", "Username of Toilet Adder");
             Location location = pinlocation;
             await RestroomService.AddPin(name, address, username, location);
