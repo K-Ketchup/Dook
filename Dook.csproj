@@ -70,9 +70,6 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <MauiXaml Update="View\DetailPage.xaml">
-	    <Generator>MSBuild:Compile</Generator>
-	  </MauiXaml>
 	  <MauiXaml Update="View\RestroomPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>

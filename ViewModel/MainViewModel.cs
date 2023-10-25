@@ -14,7 +14,7 @@ using CommunityToolkit.Maui.Core.Extensions;
 
 namespace Dook.ViewModel
 {
-    public partial class MainViewModel : BaseViewModel
+    public class MainViewModel : BaseViewModel
     {
         public ObservableRangeCollection<Restroom> Restroom { get; set; }
         public AsyncCommand RefreshCommand { get; }
@@ -24,10 +24,6 @@ namespace Dook.ViewModel
         public MainViewModel()
         {
             Title = "Map Controller";
-
-
-                //var restroom1 = RestroomService.GetPin().Result;
-                //Restroom = restroom1 as ObservableRangeCollection<Restroom>;
 
             Restroom = new ObservableRangeCollection<Restroom>();
 
