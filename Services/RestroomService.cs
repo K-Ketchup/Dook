@@ -14,7 +14,7 @@ namespace Dook.Services
 
         static async Task InitAsync()
         {
-            if(db != null) 
+            if (db != null)
                 return;
 
             //Get an absolute path to the database file
@@ -22,10 +22,17 @@ namespace Dook.Services
 
             db = new SQLiteAsyncConnection(databasePath);
 
-            await db.CreateTableAsync<Restroom>();
+            try
+            {
+                await db.CreateTableAsync<Restroom>();
+            }        
+            catch(Exception ex) 
+            { 
+                Console.WriteLine(ex.ToString());
+            }
         }
 
-        public static async Task AddPinAsync(string name, string address, string username, Location location)
+        public static async Task AddPinAsync(string name, string address, string username, double latitude, double longitude)
         {
             await InitAsync();
             var restroom = new Restroom
@@ -33,7 +40,8 @@ namespace Dook.Services
                 Name = name,
                 Address = address,
                 Username = username,
-                PinLocation = location
+                Latitude = latitude,
+                Longitude = longitude
             };
 
             var id = await db.InsertAsync(restroom);

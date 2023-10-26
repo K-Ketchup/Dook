@@ -9,11 +9,18 @@ namespace Dook.Model
 {
     public class Restroom
     {
-        [PrimaryKey, AutoIncrement]
+        [SQLite.PrimaryKey, SQLite.AutoIncrement]
+        [Column("Id")]
         public int Id { get; set; }
+        [Column("Name")]
         public string Name { get; set; }
+        [Column("Address")]
         public string Address { get; set; }
+        [Column("Username")]
         public string Username { get; set; }
-        public Location PinLocation { get; set; }
+        [Column("Latitude")]
+        public double Latitude { get; set; }
+        [Column("Longitude")]
+        public double Longitude { get; set; }
     }
 }

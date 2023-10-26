@@ -35,15 +35,16 @@ namespace Dook.ViewModel
         async Task AddAsync(Location pinlocation)
         {
             var name = await App.Current.MainPage.DisplayPromptAsync("Location Name", "Name of Location");
-           // var address = "Latitude: {pinlocation.Latitude}, Longitude: {pinlocation.Longitude}, Altitude: {location.Altitude}";
-            var address = "bruh chungus ave";
+            // var address = "Latitude: {pinlocation.Latitude}, Longitude: {pinlocation.Longitude}, Altitude: {location.Altitude}";
+            var address = "test";
             var username = await App.Current.MainPage.DisplayPromptAsync("Username", "Username of Toilet Adder");
-            Location location = pinlocation;
-            if(name == null || address == null || username == null) { return; }
-            await RestroomService.AddPinAsync(name, address, username, location);
+            var latitude = pinlocation.Latitude;
+            var longitude = pinlocation.Longitude;
+            if (name == null || address == null || username == null) { return; }
+            await RestroomService.AddPinAsync(name, address, username, latitude, longitude);
             await RefreshAsync();
         }
-        
+
         async Task RemoveAsync(Restroom restroom)
         {
             await RestroomService.RemovePinAsync(restroom.Id);

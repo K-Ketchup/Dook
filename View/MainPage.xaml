@@ -36,10 +36,16 @@
             <maps:Map.ItemTemplate>
                 <DataTemplate x:DataType="model:Restroom">
                     <maps:Pin
-                        Label="{Binding Name}"
-                        Address="{Binding Address}"
-                        Type="Generic"
-                        Location="{Binding PinLocation}"/>
+                       Label="{Binding Name}"
+                       Address="{Binding Address}"
+                       Type="Generic">
+                        <maps:Pin.Location>
+                            <sensors:Location
+                                Latitude="{Binding Latitude}"
+                                Longitude="{Binding Longitude}">
+                            </sensors:Location>
+                        </maps:Pin.Location>
+                    </maps:Pin>
                 </DataTemplate>
             </maps:Map.ItemTemplate>
         </maps:Map>

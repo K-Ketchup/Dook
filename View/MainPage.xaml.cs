@@ -21,15 +21,16 @@ public partial class MainPage : ContentPage
 
     private void OnMapClicked(object sender, MapClickedEventArgs e)
     {
-        var viewModel = new MainViewModel();
-
-        if(viewModel.AddCommand.CanExecute(e.Location)) 
-            viewModel.AddCommand.ExecuteAsync(e.Location);
+        var vm = (MainViewModel)this.BindingContext;
+        if (vm.AddCommand.CanExecute(e.Location))
+            vm.AddCommand.ExecuteAsync(e.Location);
+        
     }
 
     private void RefreshButton_Clicked(object sender, EventArgs e)
     {
-        RefreshPins();
+        var vm = (MainViewModel)this.BindingContext;
+        vm.RefreshCommand.ExecuteAsync();
     }
 
     private void MoveMapLocation()
@@ -39,11 +40,21 @@ public partial class MainPage : ContentPage
         mainmap.MoveToRegion(mapSpan);
     }
 
-    private void RefreshPins()
+    private void PopulateMapWithPins()
     {
-        var viewModel = new MainViewModel();
+        var vm = (MainViewModel)this.BindingContext;
+        foreach (var restroom in vm.Restroom)
+        {
+            Pin pin = new Pin
+            {
+                Label = restroom.Name,
+                Address = restroom.Address,
+                Type = PinType.Generic,
+                Location = new Location(restroom.Latitude, restroom.Longitude)
+            };
 
-        viewModel.RefreshCommand.ExecuteAsync();
+            mainmap.Pins.Add(pin);
+        }
     }
 }
 
