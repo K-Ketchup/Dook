@@ -12,6 +12,20 @@ public partial class MainPage : ContentPage
 	{
         InitializeComponent();
         MoveMapLocation();
+
+        var vm = (MainViewModel)this.BindingContext;
+        foreach (var restroom in vm.Restroom)
+        {
+            Pin pin = new Pin
+            {
+                Label = restroom.Name,
+                Address = restroom.Address,
+                Type = PinType.Generic,
+                Location = new Location(restroom.Latitude, restroom.Longitude)
+            };
+
+            mainmap.Pins.Add(pin);
+        }
     }
 
     private void GoToLocation_Button(object sender, EventArgs e)
@@ -24,13 +38,12 @@ public partial class MainPage : ContentPage
         var vm = (MainViewModel)this.BindingContext;
         if (vm.AddCommand.CanExecute(e.Location))
             vm.AddCommand.ExecuteAsync(e.Location);
-        
+        PopulateMap();
     }
 
     private void RefreshButton_Clicked(object sender, EventArgs e)
     {
-        var vm = (MainViewModel)this.BindingContext;
-        vm.RefreshCommand.ExecuteAsync();
+        PopulateMap();
     }
 
     private void MoveMapLocation()
@@ -40,7 +53,7 @@ public partial class MainPage : ContentPage
         mainmap.MoveToRegion(mapSpan);
     }
 
-    private void PopulateMapWithPins()
+    private void PopulateMap()
     {
         var vm = (MainViewModel)this.BindingContext;
         foreach (var restroom in vm.Restroom)

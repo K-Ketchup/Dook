@@ -32,22 +32,6 @@
             Grid.Row="0"
             MapClicked="OnMapClicked"
             ItemsSource="{Binding Restroom}">
-
-            <maps:Map.ItemTemplate>
-                <DataTemplate x:DataType="model:Restroom">
-                    <maps:Pin
-                       Label="{Binding Name}"
-                       Address="{Binding Address}"
-                       Type="Generic">
-                        <maps:Pin.Location>
-                            <sensors:Location
-                                Latitude="{Binding Latitude}"
-                                Longitude="{Binding Longitude}">
-                            </sensors:Location>
-                        </maps:Pin.Location>
-                    </maps:Pin>
-                </DataTemplate>
-            </maps:Map.ItemTemplate>
         </maps:Map>
 
         <Button
