@@ -4,7 +4,7 @@ using Microsoft.Maui.Maps;
 using System.Diagnostics;
 using Map = Microsoft.Maui.Controls.Maps.Map;
 using Dook.ViewModel;
-using Dook.Models;
+using Dook.Shared.Models;
 using Dook.Services;
 
 public partial class MainPage : ContentPage
