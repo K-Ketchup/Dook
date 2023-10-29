@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using SQLite;
 
-namespace Dook.Model
+namespace Dook.Models
 {
     public class Review
     {

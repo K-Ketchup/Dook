@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using Microsoft.Maui.Controls.Maps;
 using Microsoft.Maui.Maps;
 using Map = Microsoft.Maui.Controls.Maps.Map;
-using Dook.Model;
+using Dook.Models;
 using Dook.Services;
 using MvvmHelpers;
 using MvvmHelpers.Commands;

@@ -1,4 +1,4 @@
-﻿using Dook.Model;
+﻿using Dook.Models;
 using SQLite;
 using System;
 using System.Collections.Generic;

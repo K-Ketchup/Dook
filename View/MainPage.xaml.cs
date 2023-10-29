@@ -4,7 +4,7 @@ using Microsoft.Maui.Maps;
 using System.Diagnostics;
 using Map = Microsoft.Maui.Controls.Maps.Map;
 using Dook.ViewModel;
-using Dook.Model;
+using Dook.Models;
 using Dook.Services;
 
 public partial class MainPage : ContentPage
@@ -13,7 +13,7 @@ public partial class MainPage : ContentPage
 	{
         InitializeComponent();
         MoveMapLocation();
-        PopulateMap();
+        PopulateMapAsync();
     }
 
     private void GoToLocation_Button(object sender, EventArgs e)
@@ -23,7 +23,7 @@ public partial class MainPage : ContentPage
 
     private async void RefreshButton_Clicked(object sender, EventArgs e)
     {
-        await PopulateMap();
+        await PopulateMapAsync();
     }
 
     private async void OnMapClicked(object sender, MapClickedEventArgs e)
@@ -31,7 +31,7 @@ public partial class MainPage : ContentPage
         var vm = (MainViewModel)this.BindingContext;
         if (vm.AddCommand.CanExecute(e.Location))
             await vm.AddCommand.ExecuteAsync(e.Location);
-        await PopulateMap();
+        await PopulateMapAsync();
     }
 
     private void MoveMapLocation()
@@ -40,7 +40,7 @@ public partial class MainPage : ContentPage
         mainmap.MoveToRegion(mapSpan);
     }
 
-    private async Task PopulateMap()
+    private async Task PopulateMapAsync()
     {
         var restroomList = await RestroomService.GetPinAsync();
         foreach (var restroom in restroomList)
@@ -59,7 +59,7 @@ public partial class MainPage : ContentPage
                 mainmap.Pins.Remove(pin);
                 if(vm.RemoveCommand.CanExecute(restroom))
                     await vm.RemoveCommand.ExecuteAsync(restroom);
-                await PopulateMap();
+                await PopulateMapAsync();
             };
 
             mainmap.Pins.Add(pin);
