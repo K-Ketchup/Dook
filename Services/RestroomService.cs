@@ -25,6 +25,7 @@ namespace Dook.Services
             try
             {
                 await db.CreateTableAsync<Restroom>();
+                await db.CreateTableAsync<Review>();
             }        
             catch(Exception ex) 
             { 

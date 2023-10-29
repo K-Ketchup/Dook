@@ -13,12 +13,12 @@ namespace Dook.Model
         [Column("Id")]
         public int Id { get; set; }
         [Column("Username")]
-        public string Name { get; set; }
-        [Column("Stars")]
-        public string Address { get; set; }
-        [Column("Text")]
         public string Username { get; set; }
-        [Column("Tags")]
-        public string Tags { get; set; }
+        [Column("Stars")]
+        public double Stars { get; set; }
+        [Column("Text")]
+        public string Text { get; set; }
+        //[Column("Tags")]
+        //public string Tags { get; set; }
     }
 }
