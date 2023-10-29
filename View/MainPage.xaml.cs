@@ -5,6 +5,7 @@ using System.Diagnostics;
 using Map = Microsoft.Maui.Controls.Maps.Map;
 using Dook.ViewModel;
 using Dook.Model;
+using Dook.Services;
 
 public partial class MainPage : ContentPage
 {
@@ -12,25 +13,17 @@ public partial class MainPage : ContentPage
 	{
         InitializeComponent();
         MoveMapLocation();
-
-        var vm = (MainViewModel)this.BindingContext;
-        foreach (var restroom in vm.Restroom)
-        {
-            Pin pin = new Pin
-            {
-                Label = restroom.Name,
-                Address = restroom.Address,
-                Type = PinType.Generic,
-                Location = new Location(restroom.Latitude, restroom.Longitude)
-            };
-
-            mainmap.Pins.Add(pin);
-        }
+        PopulateMap();
     }
 
     private void GoToLocation_Button(object sender, EventArgs e)
     {
         MoveMapLocation();
+    }
+
+    private void RefreshButton_Clicked(object sender, EventArgs e)
+    {
+        PopulateMap();
     }
 
     private void OnMapClicked(object sender, MapClickedEventArgs e)
@@ -41,22 +34,16 @@ public partial class MainPage : ContentPage
         PopulateMap();
     }
 
-    private void RefreshButton_Clicked(object sender, EventArgs e)
-    {
-        PopulateMap();
-    }
-
     private void MoveMapLocation()
     {
-        //Function to avoid boilerplate code
         MapSpan mapSpan = new MapSpan(MainViewModel.GetLocation(), 0.01, 0.01);
         mainmap.MoveToRegion(mapSpan);
     }
 
-    private void PopulateMap()
+    private async void PopulateMap()
     {
-        var vm = (MainViewModel)this.BindingContext;
-        foreach (var restroom in vm.Restroom)
+        var restroomList = await RestroomService.GetPinAsync();
+        foreach (var restroom in restroomList)
         {
             Pin pin = new Pin
             {
