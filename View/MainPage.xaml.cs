@@ -28,7 +28,7 @@ public partial class MainPage : ContentPage
 
     private async void OnMapClicked(object sender, MapClickedEventArgs e)
     {
-        var vm = (MainViewModel)this.BindingContext;
+        var vm = (InternetMainViewModel)this.BindingContext;
         if (vm.AddCommand.CanExecute(e.Location))
             await vm.AddCommand.ExecuteAsync(e.Location);
         await PopulateMapAsync();
@@ -36,13 +36,13 @@ public partial class MainPage : ContentPage
 
     private void MoveMapLocation()
     {
-        MapSpan mapSpan = new MapSpan(MainViewModel.GetLocation(), 0.01, 0.01);
+        MapSpan mapSpan = new MapSpan(InternetMainViewModel.GetLocation(), 0.01, 0.01);
         mainmap.MoveToRegion(mapSpan);
     }
 
     private async Task PopulateMapAsync()
     {
-        var restroomList = await RestroomService.GetPinAsync();
+        var restroomList = await InternetRestroomService.GetPinAsync();
         foreach (var restroom in restroomList)
         {
             Pin pin = new Pin
@@ -55,7 +55,7 @@ public partial class MainPage : ContentPage
             pin.MarkerClicked += async (s, args) =>
             {
                 args.HideInfoWindow = true;
-                var vm = (MainViewModel)this.BindingContext;
+                var vm = (InternetMainViewModel)this.BindingContext;
                 mainmap.Pins.Remove(pin);
                 if(vm.RemoveCommand.CanExecute(restroom))
                     await vm.RemoveCommand.ExecuteAsync(restroom);

@@ -2,7 +2,7 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:viewmodel="clr-namespace:Dook.ViewModel"
-             x:DataType="viewmodel:MainViewModel"
+             x:DataType="viewmodel:InternetMainViewModel"
              xmlns:maps="clr-namespace:Microsoft.Maui.Controls.Maps;assembly=Microsoft.Maui.Controls.Maps"
              xmlns:sensors="clr-namespace:Microsoft.Maui.Devices.Sensors;assembly=Microsoft.Maui.Essentials"
              xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
@@ -12,7 +12,7 @@
              Shell.NavBarIsVisible="False">
 
     <ContentPage.BindingContext>
-        <viewmodel:MainViewModel />
+        <viewmodel:InternetMainViewModel />
     </ContentPage.BindingContext>
 
     <Grid

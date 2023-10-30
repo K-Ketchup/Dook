@@ -74,10 +74,4 @@
 	  <ProjectReference Include="..\Dook.Shared\Dook.Shared.csproj" />
 	</ItemGroup>
 
-	<ItemGroup>
-	  <MauiXaml Update="View\RestroomPage.xaml">
-	    <Generator>MSBuild:Compile</Generator>
-	  </MauiXaml>
-	</ItemGroup>
-
 </Project>
