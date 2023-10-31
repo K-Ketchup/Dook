@@ -6,6 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
+using MonkeyCache.FileStore;
 
 namespace Dook.Services
 {
@@ -56,20 +57,39 @@ namespace Dook.Services
             }
         }
 
-        public static async Task<IEnumerable<Restroom>> GetPinAsync()
+        public static Task<IEnumerable<Restroom>> GetPinAsync() =>
+            GetAsync<IEnumerable<Restroom>>("api/Restroom", "getrestroom");
+
+        public static async Task<string> GetPinAsync(int id)
         {
+            var response = await client.GetStringAsync($"api/Restroom/{id}");
+            return response;
+        }
+
+        static async Task<T> GetAsync<T>(string url, string key, int mins = 1, bool forceRefresh = false)
+        {
+            var json = string.Empty;
+
+            if (Connectivity.NetworkAccess != NetworkAccess.Internet)
+                json = Barrel.Current.Get<string>(key);
+            else if (!forceRefresh && !Barrel.Current.IsExpired(key))
+                json = Barrel.Current.Get<string>(key);
+
             try
             {
-                var json = await client.GetStringAsync("api/Restroom");
-            }
-            catch(Exception ex)
-            {
-                Console.WriteLine(ex.ToString());
-            }
+                if (string.IsNullOrWhiteSpace(json))
+                {
+                    json = await client.GetStringAsync(url);
 
-            var json2 = await client.GetStringAsync("api/Restroom");
-            var restrooms = JsonConvert.DeserializeObject<IEnumerable<Restroom>>(json2);
-            return restrooms;
+                    Barrel.Current.Add(key, json, TimeSpan.FromMinutes(mins));
+                }
+                return JsonConvert.DeserializeObject<T>(json);
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine($"Unable to get information from server {ex}");
+                throw ex;
+            }
         }
     }
 }

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:model="clr-namespace:Dook.Shared.Models;assembly=Dook.Shared"
+             x:Class="Dook.View.RestroomDetailPage"
+             x:DataType="model:Restroom"
+             Title="{Binding Name}">
+
+    <StackLayout Padding="20">
+        <Label Text="{Binding Name, StringFormat='Name: {0}'}"/>
+        <Label Text="{Binding Username, StringFormat='Registered by: {0}'}"/>
+        <Label Text="{Binding Address, StringFormat='Address: {0}'}"/>
+
+        <Button 
+            Text="Done"
+            Clicked="Button_Clicked"/>
+    </StackLayout>
+</ContentPage>

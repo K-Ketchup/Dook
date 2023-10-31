@@ -6,6 +6,7 @@ using Map = Microsoft.Maui.Controls.Maps.Map;
 using Dook.ViewModel;
 using Dook.Shared.Models;
 using Dook.Services;
+using CommunityToolkit.Maui.Behaviors;
 
 public partial class MainPage : ContentPage
 {
@@ -55,11 +56,15 @@ public partial class MainPage : ContentPage
             pin.MarkerClicked += async (s, args) =>
             {
                 args.HideInfoWindow = true;
+
                 var vm = (InternetMainViewModel)this.BindingContext;
-                mainmap.Pins.Remove(pin);
-                if(vm.RemoveCommand.CanExecute(restroom))
-                    await vm.RemoveCommand.ExecuteAsync(restroom);
-                await PopulateMapAsync();
+                if (vm.SelectedCommand.CanExecute(restroom))
+                    await vm.SelectedCommand.ExecuteAsync(restroom);
+
+                    //mainmap.Pins.Remove(pin);
+                    //if(vm.RemoveCommand.CanExecute(restroom))
+                    //    await vm.RemoveCommand.ExecuteAsync(restroom);
+                    //await PopulateMapAsync();
             };
 
             mainmap.Pins.Add(pin);

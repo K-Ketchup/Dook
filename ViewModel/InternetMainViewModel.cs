@@ -11,6 +11,7 @@ using Dook.Services;
 using MvvmHelpers;
 using MvvmHelpers.Commands;
 using CommunityToolkit.Maui.Core.Extensions;
+using Dook.View;
 
 namespace Dook.ViewModel
 {
@@ -20,6 +21,7 @@ namespace Dook.ViewModel
         public AsyncCommand RefreshCommand { get; }
         public AsyncCommand<Location> AddCommand { get; }
         public AsyncCommand<Restroom> RemoveCommand { get; }
+        public AsyncCommand<Restroom> SelectedCommand { get; }
 
         public InternetMainViewModel()
         {
@@ -30,6 +32,7 @@ namespace Dook.ViewModel
             AddCommand = new AsyncCommand<Location>(AddAsync);
             RemoveCommand = new AsyncCommand<Restroom>(RemoveAsync);
             RefreshCommand = new AsyncCommand(RefreshAsync);
+            SelectedCommand = new AsyncCommand<Restroom>(SelectedAsync);
         }
 
         async Task AddAsync(Location pinlocation)
@@ -59,6 +62,15 @@ namespace Dook.ViewModel
             var restrooms = await InternetRestroomService.GetPinAsync();
             Restroom.AddRange(restrooms);
             IsBusy = false;
+        }
+
+        async Task SelectedAsync(Restroom restroom)
+        {
+            if (restroom == null)
+                return;
+
+            var route = $"{nameof(RestroomDetailPage)}?RestroomId={restroom.Id}&";
+            await Shell.Current.GoToAsync(route);
         }
 
         public static Location GetLocation()

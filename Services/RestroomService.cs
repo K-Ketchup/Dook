@@ -62,5 +62,15 @@ namespace Dook.Services
             var restroom = await db.Table<Restroom>().ToListAsync();
             return restroom;
         }
+
+        public static async Task<Restroom> GetPinAsync(int id)
+        {
+            await InitAsync();
+
+            var restroom = await db.Table<Restroom>()
+                .FirstOrDefaultAsync(c =>  c.Id == id);
+
+            return restroom;
+        }
     }
 }
