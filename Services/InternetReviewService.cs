@@ -70,20 +70,10 @@ namespace Dook.Services
 
         public static async Task<IEnumerable<Review>> GetReviewAsync(int restId)
         {
+            //var json = await client.GetStringAsync($"api/Restroom/{restId}");
             var json = await client.GetStringAsync($"api/Restroom/{restId}");
-
-            try
-            {
-                var reviews = JsonConvert.DeserializeObject<IEnumerable<Review>>(json);
-                return reviews;
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine(ex.ToString);
-            }
-
-            var review2 = JsonConvert.DeserializeObject<IEnumerable<Review>>(json);
-            return review2;
+            var reviews = JsonConvert.DeserializeObject<IEnumerable<Review>>(json);
+            return reviews;
         }
     }
 }

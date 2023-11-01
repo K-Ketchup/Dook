@@ -34,9 +34,27 @@
     </ContentPage.ToolbarItems>-->
 
     <VerticalStackLayout>
+        <Frame 
+            Margin="10"
+            BorderColor="Transparent"
+            CornerRadius="50"
+            HeightRequest="300"
+            WidthRequest="300"
+            IsClippedToBounds="True"
+            HorizontalOptions="Center"
+            VerticalOptions="Center">
+            <Image 
+                Source="dook_toilet.png"
+                Aspect="AspectFill"
+                Margin="0"
+                HeightRequest="300"
+                WidthRequest="300" />
+        </Frame>
+
         <Label 
             x:DataType="model:Restroom"
-            Text="{Binding Name, StringFormat='Name: {0}'}"/>
+            Text="{Binding Name, StringFormat='Name: {0}'}"
+            FontSize="20"/>
         <Label 
             x:DataType="model:Restroom"
             Text="{Binding Username, StringFormat='Registered by: {0}'}"/>
