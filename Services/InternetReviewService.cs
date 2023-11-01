@@ -30,12 +30,12 @@ namespace Dook.Services
         {
             //Check to see if ID is a duplicate
             int idNum = random.Next(0, 100000);
-            var randomReview = await client.GetStringAsync($"api/Review/{idNum}");
+            var randomReview = await client.GetStringAsync($"api/Restroom/{idNum}");
 
             while (randomReview != "")
             {
                 idNum = random.Next(0, 100000);
-                randomReview = await client.GetStringAsync($"api/Review/{idNum}");
+                randomReview = await client.GetStringAsync($"api/Restroom/{idNum}");
             }
 
             var review = new Review()
@@ -51,7 +51,7 @@ namespace Dook.Services
             var content =
                 new StringContent(json, Encoding.UTF8, "application/json");
 
-            var response = await client.PostAsync("api/Review", content);
+            var response = await client.PostAsync("api/Restroom", content);
 
             if (!response.IsSuccessStatusCode)
             {
@@ -61,7 +61,7 @@ namespace Dook.Services
 
         public static async Task RemoveReviewAsync(int id)
         {
-            var response = await client.DeleteAsync($"api/Review/{id}");
+            var response = await client.DeleteAsync($"api/Restroom/{id}");
             if (!response.IsSuccessStatusCode)
             {
 
@@ -70,7 +70,7 @@ namespace Dook.Services
 
         public static async Task<IEnumerable<Review>> GetReviewAsync(int restId)
         {
-            var json = await client.GetStringAsync($"api/Review/{restId}");
+            var json = await client.GetStringAsync($"api/Restroom/{restId}");
 
             try
             {

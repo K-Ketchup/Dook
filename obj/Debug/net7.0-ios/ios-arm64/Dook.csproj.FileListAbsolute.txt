@@ -265,6 +265,10 @@ C:\Users\yoboi\source\repos\Dook\obj\Debug\net7.0-ios\ios-arm64\refint\Dook.dll
 C:\Users\yoboi\source\repos\Dook\obj\Debug\net7.0-ios\ios-arm64\Dook.pdb
 C:\Users\yoboi\source\repos\Dook\obj\Debug\net7.0-ios\ios-arm64\Dook.genruntimeconfig.cache
 C:\Users\yoboi\source\repos\Dook\obj\Debug\net7.0-ios\ios-arm64\ref\Dook.dll
+C:\Users\yoboi\source\repos\Dook\bin\Debug\net7.0-ios\ios-arm64\Newtonsoft.Json.dll
+C:\Users\yoboi\source\repos\Dook\bin\Debug\net7.0-ios\ios-arm64\Dook.Shared.dll
+C:\Users\yoboi\source\repos\Dook\bin\Debug\net7.0-ios\ios-arm64\Dook.Shared.pdb
+C:\Users\yoboi\source\repos\Dook\obj\Debug\net7.0-ios\ios-arm64\resizetizer\f\materialdesignicons-webfont.ttf
 C:\Users\yoboi\source\repos\Dook\obj\Debug\net7.0-ios\ios-arm64\device-builds\iphone14.5-16.6\actool\_PartialAppManifest.items
 C:\Users\yoboi\source\repos\Dook\obj\Debug\net7.0-ios\ios-arm64\device-builds\iphone14.5-16.6\actool\_BundleResourceWithLogicalName.items
 C:\Users\yoboi\source\repos\Dook\obj\Debug\net7.0-ios\ios-arm64\device-builds\iphone14.5-16.6\actool\_ProcessedImageAssetsPath.items
@@ -275,7 +279,3 @@ C:\Users\yoboi\source\repos\Dook\obj\Debug\net7.0-ios\ios-arm64\device-builds\ip
 C:\Users\yoboi\source\repos\Dook\obj\Debug\net7.0-ios\ios-arm64\device-builds\iphone14.5-16.6\coremlc\_ProcessedCoreMLModelsPath.items
 C:\Users\yoboi\source\repos\Dook\obj\Debug\net7.0-ios\ios-arm64\device-builds\iphone14.5-16.6\_ProcessedBundleResourcesPath.items
 C:\Users\yoboi\source\repos\Dook\obj\Debug\net7.0-ios\ios-arm64\device-builds\iphone14.5-16.6\_ProcessedContentPath.items
-C:\Users\yoboi\source\repos\Dook\bin\Debug\net7.0-ios\ios-arm64\Newtonsoft.Json.dll
-C:\Users\yoboi\source\repos\Dook\bin\Debug\net7.0-ios\ios-arm64\Dook.Shared.dll
-C:\Users\yoboi\source\repos\Dook\bin\Debug\net7.0-ios\ios-arm64\Dook.Shared.pdb
-C:\Users\yoboi\source\repos\Dook\obj\Debug\net7.0-ios\ios-arm64\resizetizer\f\materialdesignicons-webfont.ttf
