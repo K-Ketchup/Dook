@@ -25,13 +25,13 @@
         </ResourceDictionary>
     </ContentPage.Resources>
 
-    <ContentPage.ToolbarItems>
+    <!--<ContentPage.ToolbarItems>
         <ToolbarItem 
             BindingContext="{Binding Source={viewmodel:InternetRestroomDetailViewModel}}"
             Text="Add" 
             x:DataType="viewmodel:InternetRestroomDetailViewModel"
             Command="{Binding AddCommand}"/>
-    </ContentPage.ToolbarItems>
+    </ContentPage.ToolbarItems>-->
 
     <VerticalStackLayout>
         <Label 

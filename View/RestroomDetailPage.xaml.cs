@@ -1,4 +1,6 @@
 using Dook.Services;
+using Dook.Shared.Models;
+using Dook.ViewModel;
 
 namespace Dook.View;
 
@@ -9,6 +11,19 @@ public partial class RestroomDetailPage : ContentPage
 	public RestroomDetailPage()
 	{
 		InitializeComponent();
+
+		ToolbarItem item = new ToolbarItem
+		{
+			Text = "Add"
+		};
+		item.Clicked += async (s, args) =>
+        {
+            var vm = (RestroomDetailViewModel)this.BindingContext;
+            if (vm.AddCommand.CanExecute(RestroomId))
+                await vm.AddCommand.ExecuteAsync(RestroomId);
+        };
+
+        this.ToolbarItems.Add(item);
 	}
 
 	protected override async void OnAppearing()

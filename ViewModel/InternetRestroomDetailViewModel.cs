@@ -14,7 +14,7 @@ namespace Dook.ViewModel
     {
         public ObservableRangeCollection<Review> Review { get; set; }
         public AsyncCommand RefreshCommand { get; }
-        public AsyncCommand AddCommand { get; }
+        public AsyncCommand<int> AddCommand { get; }
         public AsyncCommand<Review> RemoveCommand { get; }
 
         public InternetRestroomDetailViewModel()
@@ -24,17 +24,18 @@ namespace Dook.ViewModel
             Review = new ObservableRangeCollection<Review>();
 
             RefreshCommand = new AsyncCommand(RefreshAsync);
-            AddCommand = new AsyncCommand(AddAsync);
+            AddCommand = new AsyncCommand<int>(AddAsync);
             RemoveCommand = new AsyncCommand<Review>(RemoveAsync);
         }
 
-        async Task AddAsync()
+        async Task AddAsync(int restId)
         {
             var username = await App.Current.MainPage.DisplayPromptAsync("Username", "Username for review");
             var stars = await App.Current.MainPage.DisplayPromptAsync("Stars", "Stars for review", maxLength: 1, keyboard: Keyboard.Numeric);
             var text = await App.Current.MainPage.DisplayPromptAsync("Text", "Add text", maxLength: 50);
+            var RestroomId = restId;
             if (username == null || stars == null || text == null) { return; }
-            await InternetReviewService.AddReviewAsync(username, Double.Parse(stars), text);
+            await InternetReviewService.AddReviewAsync(username, Double.Parse(stars), text, restId);
             await RefreshAsync();
         }
         async Task RemoveAsync(Review review)

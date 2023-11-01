@@ -26,7 +26,7 @@ namespace Dook.Services
 
         static Random random = new Random();
 
-        public static async Task AddReviewAsync(string username, double stars, string text)
+        public static async Task AddReviewAsync(string username, double stars, string text, int restroomid)
         {
             //Check to see if ID is a duplicate
             int idNum = random.Next(0, 100000);
@@ -43,7 +43,8 @@ namespace Dook.Services
                 Username = username,
                 Stars = stars,
                 Text = text,
-                Id= idNum
+                Id = idNum,
+                RestroomId = restroomid 
             };
 
             var json = JsonConvert.SerializeObject(review);
