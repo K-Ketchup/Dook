@@ -19,8 +19,8 @@ public partial class RestroomDetailPage : ContentPage
 		BindingContext = await InternetRestroomService.GetSingularPinAsync(result);
 	}
 
-    private async void Button_Clicked(object sender, EventArgs e)
-    {
-		await Shell.Current.GoToAsync("..");
-    }
+  //  private async void Button_Clicked(object sender, EventArgs e)
+  //  {
+		//await Shell.Current.GoToAsync("..");
+  //  }
 }

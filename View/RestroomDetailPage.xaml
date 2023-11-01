@@ -2,21 +2,91 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:model="clr-namespace:Dook.Shared.Models;assembly=Dook.Shared"
-             x:Class="Dook.View.RestroomDetailPage"
-             x:DataType="model:Restroom"
-             Title="{Binding Name}">
+             xmlns:viewmodel="clr-namespace:Dook.ViewModel"
+             xmlns:controls="clr-namespace:Dook.Controls"
+             xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+             x:Class="Dook.View.RestroomDetailPage">
 
-    <StackLayout Padding="20">
-        <Label Text="{Binding Name, StringFormat='Name: {0}'}"/>
-        <Label Text="{Binding Username, StringFormat='Registered by: {0}'}"/>
-        <Label Text="{Binding Address, StringFormat='Address: {0}'}"/>
-
-        <Button 
+    <Shell.TitleView>
+        <Label
+            BindingContext="{Binding Source={model:Restroom}}"
+            x:DataType="model:Restroom"
             Text="{Binding Name}"
-            Clicked="Button_Clicked"/>
+            HorizontalTextAlignment="Center"/>
+    </Shell.TitleView>
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <toolkit:SelectedItemEventArgsConverter x:Key="SelectedItemEventArgsConverter"/>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+    <ContentPage.ToolbarItems>
+        <ToolbarItem 
+            BindingContext="{Binding Source = {viewmodel:RestroomDetailViewModel}}"
+            x:DataType="viewmodel:RestroomDetailViewModel"
+            Text="Add" 
+            Command="{Binding AddCommand}"/>
+    </ContentPage.ToolbarItems>
+
+    <VerticalStackLayout>
+        <Label 
+            x:DataType="model:Restroom"
+            Text="{Binding Name, Source={model:Restroom}, StringFormat='Name: {0}'}"/>
+        <Label 
+            x:DataType="model:Restroom"
+            Text="{Binding Username, Source={model:Restroom}, StringFormat='Registered by: {0}'}"/>
+        <Label 
+            x:DataType="model:Restroom"
+            Text="{Binding Address, Source={model:Restroom}, StringFormat='Address: {0}'}"/>
         
-        <Button 
-            Text="Done"
-            Clicked="Button_Clicked"/>
-    </StackLayout>
+        <ListView
+            BindingContext="{Binding Source = {viewmodel:RestroomDetailViewModel}}"
+            BackgroundColor="Transparent"
+            CachingStrategy="RecycleElement"
+            HasUnevenRows="True"
+            IsPullToRefreshEnabled="True"
+            IsRefreshing="{Binding IsBusy, Mode=OneWay}"
+            ItemsSource="{Binding Review}"
+            RefreshCommand="{Binding RefreshCommand}"
+            RefreshControlColor="Red"
+            SelectionMode="None"
+            SeparatorVisibility="None">
+            <ListView.ItemTemplate>
+                <DataTemplate x:DataType="model:Review">
+                    <ViewCell>
+                        <ViewCell.ContextActions>
+                            <ToolbarItem
+                            Command="{Binding Source={x:Reference RestroomDetailPage}, Path=BindingContext.RemoveCommand}"
+                            CommandParameter="{Binding .}"
+                            IsDestructive="True"
+                            Text="Delete" />
+                        </ViewCell.ContextActions>
+                        <Grid Padding="10">
+                            <Frame CornerRadius="20" HasShadow="True">
+                                <StackLayout Orientation="Horizontal">
+                                    <StackLayout VerticalOptions="Center">
+                                        <Label
+                                        FontSize="Large"
+                                        Text="{Binding Username}"
+                                        VerticalOptions="Center"/>
+                                        <controls:RatingControl 
+                                        Amount="5"
+                                        CurrentValue="{Binding Stars}"
+                                        AccentColor="Yellow"
+                                        StarSize="36" 
+                                        VerticalOptions="End" />
+                                        <Label
+                                        FontSize="Small"
+                                        Text="{Binding Text}"
+                                        VerticalOptions="Center"/>
+                                    </StackLayout>
+                                </StackLayout>
+                            </Frame>
+                        </Grid>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+    </VerticalStackLayout>
 </ContentPage>

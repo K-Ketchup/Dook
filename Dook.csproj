@@ -54,6 +54,7 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <None Remove="Resources\Fonts\materialdesignicons-webfont.ttf" />
 	  <None Remove="Resources\Images\feather_navigation_icon.png" />
 	</ItemGroup>
 
