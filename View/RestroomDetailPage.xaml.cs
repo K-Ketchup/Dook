@@ -1,6 +1,7 @@
 using Dook.Services;
 using Dook.Shared.Models;
 using Dook.ViewModel;
+using Microsoft.Maui.Controls.Maps;
 using System.Windows.Input;
 
 namespace Dook.View;
@@ -43,9 +44,4 @@ public partial class RestroomDetailPage : ContentPage
 		restroom = await InternetRestroomService.GetSingularPinAsync(result);
 		BindingContext = restroom;
 	}
-
-  //  private async void Button_Clicked(object sender, EventArgs e)
-  //  {
-		//await Shell.Current.GoToAsync("..");
-  //  }
 }

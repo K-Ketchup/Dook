@@ -280,3 +280,4 @@ C:\Users\yoboi\source\repos\Dook\obj\Debug\net7.0-ios\ios-arm64\device-builds\ip
 C:\Users\yoboi\source\repos\Dook\obj\Debug\net7.0-ios\ios-arm64\device-builds\iphone14.5-16.6\_ProcessedBundleResourcesPath.items
 C:\Users\yoboi\source\repos\Dook\obj\Debug\net7.0-ios\ios-arm64\device-builds\iphone14.5-16.6\_ProcessedContentPath.items
 C:\Users\yoboi\source\repos\Dook\obj\Debug\net7.0-ios\ios-arm64\resizetizer\r\Resources\dook_toilet.png
+C:\Users\yoboi\source\repos\Dook\obj\Debug\net7.0-ios\ios-arm64\resizetizer\r\Resources\feather_refresh_icon.png

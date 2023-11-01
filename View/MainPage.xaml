@@ -7,9 +7,11 @@
              xmlns:sensors="clr-namespace:Microsoft.Maui.Devices.Sensors;assembly=Microsoft.Maui.Essentials"
              xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
              xmlns:model="clr-namespace:Dook.Shared.Models;assembly=Dook.Shared"
+             xmlns:ios="clr-namespace:Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;assembly=Microsoft.Maui.Controls"
+             ios:Page.UseSafeArea="False"
              x:Class="Dook.MainPage"
              Shell.PresentationMode="Modal"
-             Title="{Binding Title}">
+             Title="Map">
     <!--Shell.NavBarIsVisible="False"-->
 
     <ContentPage.BindingContext>
@@ -32,29 +34,33 @@
             IsEnabled="True"
             Grid.Row="0"
             MapClicked="OnMapClicked"
-            ItemsSource="{Binding Restroom}">
+            ItemsSource="{Binding Restroom}"
+            MinimumHeightRequest="2000">
         </maps:Map>
 
-        <Button
-            Text="Refresh"
+        <ImageButton
+            Source="feather_refresh_icon.png"
+            Aspect="AspectFill"
+            Clicked="RefreshButton_Clicked" 
             IsEnabled="{Binding IsNotBusy}"
-            Clicked="RefreshButton_Clicked"
-            Margin="5"
-            VerticalOptions="Center"
+            Margin="40"
+            VerticalOptions="End"
             HorizontalOptions="Start"
-            Grid.Row="1"/>
+            WidthRequest="20"
+            HeightRequest="20"
+            CornerRadius="10"
+            Grid.Row="0"/>
 
         <ImageButton
             Source="feather_navigation_icon.png"
             Aspect="AspectFill"
             Clicked="GoToLocation_Button" 
             IsEnabled="{Binding IsNotBusy}"
-            Margin="20"
+            Margin="40"
             VerticalOptions="End"
             HorizontalOptions="End"
-            WidthRequest="13"
-            HeightRequest="13"
-            BackgroundColor="Transparent"
+            WidthRequest="20"
+            HeightRequest="20"
             CornerRadius="10"
             Grid.Row="0"/>
 
