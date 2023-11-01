@@ -5,7 +5,8 @@
              xmlns:viewmodel="clr-namespace:Dook.ViewModel"
              xmlns:controls="clr-namespace:Dook.Controls"
              xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
-             x:Class="Dook.View.RestroomDetailPage">
+             x:Class="Dook.View.RestroomDetailPage"
+             x:Name="RestroomPage">
 
     <Shell.TitleView>
         <Label
@@ -56,14 +57,14 @@
             RefreshControlColor="Red"
             SelectionMode="None"
             SeparatorVisibility="None"
-            WidthRequest="500"
+            WidthRequest="400"
             HeightRequest="500">
             <ListView.ItemTemplate>
                 <DataTemplate x:DataType="model:Review">
                     <ViewCell>
                         <ViewCell.ContextActions>
                             <ToolbarItem
-                                Command="{Binding Source={x:Reference RestroomDetailPage}, Path=BindingContext.RemoveCommand}"
+                                Command="{Binding RemoveCommand, Source={viewmodel:RestroomDetailViewModel}}"
                                 CommandParameter="{Binding .}"
                                 IsDestructive="True"
                                 Text="Delete" />
@@ -78,19 +79,25 @@
                                     <StackLayout 
                                         VerticalOptions="Center">
                                         <Label
-                                        FontSize="Large"
-                                        Text="{Binding Username, Source={model:Review}}"
-                                        VerticalOptions="Center"/>
+                                            BindingContext="{Binding Source={model:Review}}"
+                                            FontSize="Large"
+                                            x:DataType="model:Review"
+                                            Text="{Binding Username}"
+                                            VerticalOptions="Center"/>
                                         <controls:RatingControl 
-                                        Amount="5"
-                                        CurrentValue="{Binding Stars, Source={model:Review}}"
-                                        AccentColor="Yellow"
-                                        StarSize="36" 
-                                        VerticalOptions="End" />
+                                            BindingContext="{Binding Source={model:Review}}"
+                                            Amount="5"
+                                            x:DataType="model:Review"
+                                            CurrentValue="{Binding Stars}"
+                                            AccentColor="Yellow"
+                                            StarSize="36" 
+                                            VerticalOptions="End" />
                                         <Label
-                                        FontSize="Small"
-                                        Text="{Binding Text, Source={model:Review}}"
-                                        VerticalOptions="Center"/>
+                                            BindingContext="{Binding Source={model:Review}}"
+                                            FontSize="Small"
+                                            x:DataType="model:Review"
+                                            Text="{Binding Text}"
+                                            VerticalOptions="Center"/>
                                     </StackLayout>
                                 </StackLayout>
                             </Frame>
