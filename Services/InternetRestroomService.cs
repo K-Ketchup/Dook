@@ -6,7 +6,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
-using MonkeyCache.FileStore;
 
 namespace Dook.Services
 {
@@ -25,15 +24,29 @@ namespace Dook.Services
             };
         }
 
+        static Random random = new Random();
+
         public static async Task AddPinAsync(string name, string address, string username, double latitude, double longitude)
         {
+            //Check to see if ID is a duplicate
+            int idNum = random.Next(0, 100000);
+            var randomRestroom = await client.GetStringAsync($"api/Restroom/{idNum}");
+            Debug.Write(randomRestroom);
+
+            while (randomRestroom != "")
+            {
+                idNum = random.Next(0, 100000);
+                randomRestroom = await client.GetStringAsync($"api/Restroom/{idNum}");
+            }
+
             var restroom = new Restroom
             {
                 Name = name,
                 Address = address,
                 Username = username,
                 Latitude = latitude,
-                Longitude = longitude
+                Longitude = longitude,
+                Id = idNum
             };
 
             var json = JsonConvert.SerializeObject(restroom);
@@ -57,39 +70,18 @@ namespace Dook.Services
             }
         }
 
-        public static Task<IEnumerable<Restroom>> GetPinAsync() =>
-            GetAsync<IEnumerable<Restroom>>("api/Restroom", "getrestroom");
-
-        public static async Task<string> GetPinAsync(int id)
+        public static async Task<IEnumerable<Restroom>> GetPinAsync()
         {
-            var response = await client.GetStringAsync($"api/Restroom/{id}");
-            return response;
+            var json = await client.GetStringAsync("api/Restroom");
+            var restrooms = JsonConvert.DeserializeObject<IEnumerable<Restroom>>(json);
+            return restrooms;
         }
 
-        static async Task<T> GetAsync<T>(string url, string key, int mins = 1, bool forceRefresh = false)
+        public static async Task<Restroom> GetSingularPinAsync(int id)
         {
-            var json = string.Empty;
-
-            if (Connectivity.NetworkAccess != NetworkAccess.Internet)
-                json = Barrel.Current.Get<string>(key);
-            else if (!forceRefresh && !Barrel.Current.IsExpired(key))
-                json = Barrel.Current.Get<string>(key);
-
-            try
-            {
-                if (string.IsNullOrWhiteSpace(json))
-                {
-                    json = await client.GetStringAsync(url);
-
-                    Barrel.Current.Add(key, json, TimeSpan.FromMinutes(mins));
-                }
-                return JsonConvert.DeserializeObject<T>(json);
-            }
-            catch (Exception ex)
-            {
-                Debug.WriteLine($"Unable to get information from server {ex}");
-                throw ex;
-            }
+            var json = await client.GetStringAsync($"api/Restroom/{id}");
+            var restroom = JsonConvert.DeserializeObject<Restroom>(json);
+            return restroom;
         }
     }
 }

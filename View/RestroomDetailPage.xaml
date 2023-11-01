@@ -12,6 +12,10 @@
         <Label Text="{Binding Address, StringFormat='Address: {0}'}"/>
 
         <Button 
+            Text="{Binding Name}"
+            Clicked="Button_Clicked"/>
+        
+        <Button 
             Text="Done"
             Clicked="Button_Clicked"/>
     </StackLayout>

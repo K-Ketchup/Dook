@@ -58,13 +58,14 @@ public partial class MainPage : ContentPage
                 args.HideInfoWindow = true;
 
                 var vm = (InternetMainViewModel)this.BindingContext;
+                Debug.Write(restroom.Id);
                 if (vm.SelectedCommand.CanExecute(restroom))
                     await vm.SelectedCommand.ExecuteAsync(restroom);
 
-                    //mainmap.Pins.Remove(pin);
-                    //if(vm.RemoveCommand.CanExecute(restroom))
-                    //    await vm.RemoveCommand.ExecuteAsync(restroom);
-                    //await PopulateMapAsync();
+                //mainmap.Pins.Remove(pin);
+                //if(vm.RemoveCommand.CanExecute(restroom))
+                //    await vm.RemoveCommand.ExecuteAsync(restroom);
+                //await PopulateMapAsync();
             };
 
             mainmap.Pins.Add(pin);

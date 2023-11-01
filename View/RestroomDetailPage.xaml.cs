@@ -16,7 +16,7 @@ public partial class RestroomDetailPage : ContentPage
 		base.OnAppearing();
 		int.TryParse(RestroomId, out var result);
 
-		BindingContext = await InternetRestroomService.GetPinAsync(result);
+		BindingContext = await InternetRestroomService.GetSingularPinAsync(result);
 	}
 
     private async void Button_Clicked(object sender, EventArgs e)
