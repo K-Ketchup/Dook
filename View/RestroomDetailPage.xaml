@@ -9,12 +9,15 @@
 
     <Shell.TitleView>
         <Label
-            BindingContext="{Binding Source={model:Restroom}}"
             x:DataType="model:Restroom"
             Text="{Binding Name}"
             HorizontalTextAlignment="Center"/>
     </Shell.TitleView>
-
+    
+    <ContentPage.BindingContext>
+        <viewmodel:RestroomDetailViewModel/>
+    </ContentPage.BindingContext>
+    
     <ContentPage.Resources>
         <ResourceDictionary>
             <toolkit:SelectedItemEventArgsConverter x:Key="SelectedItemEventArgsConverter"/>
@@ -23,26 +26,27 @@
 
     <ContentPage.ToolbarItems>
         <ToolbarItem 
-            BindingContext="{Binding Source = {viewmodel:RestroomDetailViewModel}}"
-            x:DataType="viewmodel:RestroomDetailViewModel"
+            BindingContext="{Binding Source={viewmodel:RestroomDetailViewModel}}"
             Text="Add" 
+            x:DataType="viewmodel:RestroomDetailViewModel"
             Command="{Binding AddCommand}"/>
     </ContentPage.ToolbarItems>
 
     <VerticalStackLayout>
         <Label 
             x:DataType="model:Restroom"
-            Text="{Binding Name, Source={model:Restroom}, StringFormat='Name: {0}'}"/>
+            Text="{Binding Name, StringFormat='Name: {0}'}"/>
         <Label 
             x:DataType="model:Restroom"
-            Text="{Binding Username, Source={model:Restroom}, StringFormat='Registered by: {0}'}"/>
+            Text="{Binding Username, StringFormat='Registered by: {0}'}"/>
         <Label 
             x:DataType="model:Restroom"
-            Text="{Binding Address, Source={model:Restroom}, StringFormat='Address: {0}'}"/>
+            Text="{Binding Address, StringFormat='Address: {0}'}"/>
         
         <ListView
-            BindingContext="{Binding Source = {viewmodel:RestroomDetailViewModel}}"
-            BackgroundColor="Transparent"
+            x:DataType="viewmodel:RestroomDetailViewModel"
+            BindingContext="{Binding Source={viewmodel:RestroomDetailViewModel}}"
+            BackgroundColor="Blue"
             CachingStrategy="RecycleElement"
             HasUnevenRows="True"
             IsPullToRefreshEnabled="True"
@@ -51,34 +55,41 @@
             RefreshCommand="{Binding RefreshCommand}"
             RefreshControlColor="Red"
             SelectionMode="None"
-            SeparatorVisibility="None">
+            SeparatorVisibility="None"
+            WidthRequest="500"
+            HeightRequest="500">
             <ListView.ItemTemplate>
                 <DataTemplate x:DataType="model:Review">
                     <ViewCell>
                         <ViewCell.ContextActions>
                             <ToolbarItem
-                            Command="{Binding Source={x:Reference RestroomDetailPage}, Path=BindingContext.RemoveCommand}"
-                            CommandParameter="{Binding .}"
-                            IsDestructive="True"
-                            Text="Delete" />
+                                Command="{Binding Source={x:Reference RestroomDetailPage}, Path=BindingContext.RemoveCommand}"
+                                CommandParameter="{Binding .}"
+                                IsDestructive="True"
+                                Text="Delete" />
                         </ViewCell.ContextActions>
-                        <Grid Padding="10">
-                            <Frame CornerRadius="20" HasShadow="True">
-                                <StackLayout Orientation="Horizontal">
-                                    <StackLayout VerticalOptions="Center">
+                        <Grid 
+                            Padding="10">
+                            <Frame 
+                                CornerRadius="20" 
+                                HasShadow="True">
+                                <StackLayout 
+                                    Orientation="Horizontal">
+                                    <StackLayout 
+                                        VerticalOptions="Center">
                                         <Label
                                         FontSize="Large"
-                                        Text="{Binding Username}"
+                                        Text="{Binding Username, Source={model:Review}}"
                                         VerticalOptions="Center"/>
                                         <controls:RatingControl 
                                         Amount="5"
-                                        CurrentValue="{Binding Stars}"
+                                        CurrentValue="{Binding Stars, Source={model:Review}}"
                                         AccentColor="Yellow"
                                         StarSize="36" 
                                         VerticalOptions="End" />
                                         <Label
                                         FontSize="Small"
-                                        Text="{Binding Text}"
+                                        Text="{Binding Text, Source={model:Review}}"
                                         VerticalOptions="Center"/>
                                     </StackLayout>
                                 </StackLayout>
