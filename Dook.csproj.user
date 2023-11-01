@@ -3,7 +3,7 @@
   <PropertyGroup>
     <IsFirstTimeProjectOpen>False</IsFirstTimeProjectOpen>
     <ActiveDebugFramework>net7.0-ios</ActiveDebugFramework>
-    <ActiveDebugProfile>Local Device</ActiveDebugProfile>
+    <ActiveDebugProfile>NISHIPHONE</ActiveDebugProfile>
     <SelectedPlatformGroup>LocalDevice</SelectedPlatformGroup>
     <DeveloperId>B7SWNU67LT</DeveloperId>
     <DevelopmentTeamId>B7SWNU67LT</DevelopmentTeamId>

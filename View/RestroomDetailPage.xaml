@@ -69,33 +69,22 @@
                                 IsDestructive="True"
                                 Text="Delete" />
                         </ViewCell.ContextActions>
-                        <Grid 
-                            Padding="10">
-                            <Frame 
-                                CornerRadius="20" 
-                                HasShadow="True">
-                                <StackLayout 
-                                    Orientation="Horizontal">
-                                    <StackLayout 
-                                        VerticalOptions="Center">
+                        <Grid Padding="10">
+                            <Frame CornerRadius="20" HasShadow="True">
+                                <StackLayout Orientation="Horizontal">
+                                    <StackLayout VerticalOptions="Center">
                                         <Label
-                                            BindingContext="{Binding Source={model:Review}}"
                                             FontSize="Large"
-                                            x:DataType="model:Review"
                                             Text="{Binding Username}"
                                             VerticalOptions="Center"/>
                                         <controls:RatingControl 
-                                            BindingContext="{Binding Source={model:Review}}"
                                             Amount="5"
-                                            x:DataType="model:Review"
                                             CurrentValue="{Binding Stars}"
                                             AccentColor="Yellow"
                                             StarSize="36" 
                                             VerticalOptions="End" />
                                         <Label
-                                            BindingContext="{Binding Source={model:Review}}"
                                             FontSize="Small"
-                                            x:DataType="model:Review"
                                             Text="{Binding Text}"
                                             VerticalOptions="Center"/>
                                     </StackLayout>
