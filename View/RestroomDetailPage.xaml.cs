@@ -8,6 +8,7 @@ namespace Dook.View;
 public partial class RestroomDetailPage : ContentPage
 {
 	public string RestroomId { get; set; }
+	public Restroom restroom { get; set; }
 	public RestroomDetailPage()
 	{
 		InitializeComponent();
@@ -18,11 +19,10 @@ public partial class RestroomDetailPage : ContentPage
 		};
 		item.Clicked += async (s, args) =>
         {
-            var vm = (RestroomDetailViewModel)this.BindingContext;
-            if (vm.AddCommand.CanExecute(RestroomId))
-                await vm.AddCommand.ExecuteAsync(RestroomId);
+            var vm = (InternetRestroomDetailViewModel)this.BindingContext;
+            if (vm.AddCommand.CanExecute(restroom.Id))
+                await vm.AddCommand.ExecuteAsync(restroom.Id);
         };
-
         this.ToolbarItems.Add(item);
 	}
 
@@ -31,7 +31,8 @@ public partial class RestroomDetailPage : ContentPage
 		base.OnAppearing();
 		int.TryParse(RestroomId, out var result);
 
-		BindingContext = await InternetRestroomService.GetSingularPinAsync(result);
+		restroom = await InternetRestroomService.GetSingularPinAsync(result);
+		BindingContext = restroom;
 	}
 
   //  private async void Button_Clicked(object sender, EventArgs e)

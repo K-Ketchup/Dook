@@ -58,7 +58,8 @@
             SelectionMode="None"
             SeparatorVisibility="None"
             WidthRequest="400"
-            HeightRequest="500">
+            HeightRequest="500"
+            x:Name="ReviewList">
             <ListView.ItemTemplate>
                 <DataTemplate x:DataType="model:Review">
                     <ViewCell>
