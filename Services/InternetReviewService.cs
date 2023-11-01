@@ -30,12 +30,12 @@ namespace Dook.Services
         {
             //Check to see if ID is a duplicate
             int idNum = random.Next(0, 100000);
-            var randomReview = await client.GetStringAsync($"api/Restroom/{idNum}");
+            var randomReview = await client.GetStringAsync($"api/Review/{idNum}");
 
             while (randomReview != "")
             {
                 idNum = random.Next(0, 100000);
-                randomReview = await client.GetStringAsync($"api/Restroom/{idNum}");
+                randomReview = await client.GetStringAsync($"api/Review/{idNum}");
             }
 
             var review = new Review()
@@ -51,7 +51,7 @@ namespace Dook.Services
             var content =
                 new StringContent(json, Encoding.UTF8, "application/json");
 
-            var response = await client.PostAsync("api/Restroom", content);
+            var response = await client.PostAsync("api/Review", content);
 
             if (!response.IsSuccessStatusCode)
             {
@@ -61,18 +61,29 @@ namespace Dook.Services
 
         public static async Task RemoveReviewAsync(int id)
         {
-            var response = await client.DeleteAsync($"api/Restroom/{id}");
+            var response = await client.DeleteAsync($"api/Review/{id}");
             if (!response.IsSuccessStatusCode)
             {
 
             }
         }
 
-        public static async Task<IEnumerable<Review>> GetReviewAsync()
+        public static async Task<IEnumerable<Review>> GetReviewAsync(int restId)
         {
-            var json = await client.GetStringAsync("api/Restroom");
-            var reviews = JsonConvert.DeserializeObject<IEnumerable<Review>>(json);
-            return reviews;
+            var json = await client.GetStringAsync($"api/Review/{restId}");
+
+            try
+            {
+                var reviews = JsonConvert.DeserializeObject<IEnumerable<Review>>(json);
+                return reviews;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.ToString);
+            }
+
+            var review2 = JsonConvert.DeserializeObject<IEnumerable<Review>>(json);
+            return review2;
         }
     }
 }

@@ -1,6 +1,7 @@
 using Dook.Services;
 using Dook.Shared.Models;
 using Dook.ViewModel;
+using System.Windows.Input;
 
 namespace Dook.View;
 
@@ -13,17 +14,25 @@ public partial class RestroomDetailPage : ContentPage
 	{
 		InitializeComponent();
 
-		ToolbarItem item = new ToolbarItem
+        var vm = (InternetRestroomDetailViewModel)this.BindingContext;
+        ToolbarItem item = new ToolbarItem
 		{
 			Text = "Add"
 		};
 		item.Clicked += async (s, args) =>
         {
-            var vm = (InternetRestroomDetailViewModel)this.BindingContext;
-            if (vm.AddCommand.CanExecute(restroom.Id))
-                await vm.AddCommand.ExecuteAsync(restroom.Id);
+            if (vm.AddCommand.CanExecute(restroom.Id.ToString()))
+                await vm.AddCommand.ExecuteAsync(restroom.Id.ToString());
         };
         this.ToolbarItems.Add(item);
+
+		ICommand refreshCommand = new Command(() =>
+		{
+			if (vm.RefreshCommand.CanExecute(restroom.Id.ToString()))
+				vm.RefreshCommand.ExecuteAsync(restroom.Id.ToString());
+			
+		});
+		ReviewList.RefreshCommand = refreshCommand;
 	}
 
 	protected override async void OnAppearing()

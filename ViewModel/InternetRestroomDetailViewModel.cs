@@ -13,8 +13,9 @@ namespace Dook.ViewModel
     public class InternetRestroomDetailViewModel : BaseViewModel
     {
         public ObservableRangeCollection<Review> Review { get; set; }
-        public AsyncCommand RefreshCommand { get; }
-        public AsyncCommand<int> AddCommand { get; }
+        public String rID { get; set; }
+        public AsyncCommand<String> RefreshCommand { get; }
+        public AsyncCommand<String> AddCommand { get; }
         public AsyncCommand<Review> RemoveCommand { get; }
 
         public InternetRestroomDetailViewModel()
@@ -23,33 +24,33 @@ namespace Dook.ViewModel
 
             Review = new ObservableRangeCollection<Review>();
 
-            RefreshCommand = new AsyncCommand(RefreshAsync);
-            AddCommand = new AsyncCommand<int>(AddAsync);
+            RefreshCommand = new AsyncCommand<String>(RefreshAsync);
+            AddCommand = new AsyncCommand<String>(AddAsync);
             RemoveCommand = new AsyncCommand<Review>(RemoveAsync);
         }
 
-        async Task AddAsync(int restId)
+        async Task AddAsync(String restId)
         {
             var username = await App.Current.MainPage.DisplayPromptAsync("Username", "Username for review");
             var stars = await App.Current.MainPage.DisplayPromptAsync("Stars", "Stars for review", maxLength: 1, keyboard: Keyboard.Numeric);
             var text = await App.Current.MainPage.DisplayPromptAsync("Text", "Add text", maxLength: 50);
-            var RestroomId = restId;
+            rID = restId;
             if (username == null || stars == null || text == null) { return; }
-            await InternetReviewService.AddReviewAsync(username, Double.Parse(stars), text, restId);
-            await RefreshAsync();
+            await InternetReviewService.AddReviewAsync(username, Double.Parse(stars), text, Int32.Parse(rID));
+            await RefreshAsync(rID);
         }
         async Task RemoveAsync(Review review)
         {
             await InternetReviewService.RemoveReviewAsync(review.Id);
-            await RefreshAsync();
+            await RefreshAsync(rID);
         }
 
-        async Task RefreshAsync()
+        async Task RefreshAsync(String restId)
         {
             IsBusy = true;
             await Task.Delay(2000);
             Review.Clear();
-            var reviews = await ReviewService.GetReviewAsync();
+            var reviews = await InternetReviewService.GetReviewAsync(Int32.Parse(restId));
             Review.AddRange(reviews);
             IsBusy = false;
         }
