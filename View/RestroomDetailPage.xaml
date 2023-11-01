@@ -16,7 +16,7 @@
     </Shell.TitleView>
     
     <ContentPage.BindingContext>
-        <viewmodel:RestroomDetailViewModel/>
+        <viewmodel:InternetRestroomDetailViewModel/>
     </ContentPage.BindingContext>
     
     <ContentPage.Resources>
@@ -27,9 +27,9 @@
 
     <ContentPage.ToolbarItems>
         <ToolbarItem 
-            BindingContext="{Binding Source={viewmodel:RestroomDetailViewModel}}"
+            BindingContext="{Binding Source={viewmodel:InternetRestroomDetailViewModel}}"
             Text="Add" 
-            x:DataType="viewmodel:RestroomDetailViewModel"
+            x:DataType="viewmodel:InternetRestroomDetailViewModel"
             Command="{Binding AddCommand}"/>
     </ContentPage.ToolbarItems>
 
@@ -45,8 +45,8 @@
             Text="{Binding Address, StringFormat='Address: {0}'}"/>
         
         <ListView
-            x:DataType="viewmodel:RestroomDetailViewModel"
-            BindingContext="{Binding Source={viewmodel:RestroomDetailViewModel}}"
+            x:DataType="viewmodel:InternetRestroomDetailViewModel"
+            BindingContext="{Binding Source={viewmodel:InternetRestroomDetailViewModel}}"
             BackgroundColor="Blue"
             CachingStrategy="RecycleElement"
             HasUnevenRows="True"
@@ -64,7 +64,7 @@
                     <ViewCell>
                         <ViewCell.ContextActions>
                             <ToolbarItem
-                                Command="{Binding RemoveCommand, Source={viewmodel:RestroomDetailViewModel}}"
+                                Command="{Binding RemoveCommand, Source={viewmodel:InternetRestroomDetailViewModel}}"
                                 CommandParameter="{Binding .}"
                                 IsDestructive="True"
                                 Text="Delete" />

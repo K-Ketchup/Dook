@@ -1,22 +1,22 @@
 ﻿using Dook.Shared.Models;
+using Newtonsoft.Json;
 using SQLite;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Newtonsoft.Json;
 
 namespace Dook.Services
 {
-    public static class InternetRestroomService
+    public static class InternetReviewService
     {
         //static string Baseurl = DeviceInfo.Platform == DevicePlatform.Android ?
         //                                    "http://10.0.2.2:5000" : "http://localhost:5000";
         static string BaseUrl = "https://dookwebapp.azurewebsites.net/";
         static HttpClient client;
 
-        static InternetRestroomService()
+        static InternetReviewService()
         {
             client = new HttpClient()
             {
@@ -26,42 +26,39 @@ namespace Dook.Services
 
         static Random random = new Random();
 
-        public static async Task AddPinAsync(string name, string address, string username, double latitude, double longitude)
+        public static async Task AddReviewAsync(string username, double stars, string text)
         {
             //Check to see if ID is a duplicate
             int idNum = random.Next(0, 100000);
-            var randomRestroom = await client.GetStringAsync($"api/Restroom/{idNum}");
-            Debug.Write(randomRestroom);
+            var randomReview = await client.GetStringAsync($"api/Restroom/{idNum}");
 
-            while (randomRestroom != "")
+            while (randomReview != "")
             {
                 idNum = random.Next(0, 100000);
-                randomRestroom = await client.GetStringAsync($"api/Restroom/{idNum}");
+                randomReview = await client.GetStringAsync($"api/Restroom/{idNum}");
             }
 
-            var restroom = new Restroom
+            var review = new Review()
             {
-                Name = name,
-                Address = address,
                 Username = username,
-                Latitude = latitude,
-                Longitude = longitude,
-                Id = idNum
+                Stars = stars,
+                Text = text,
+                Id= idNum
             };
 
-            var json = JsonConvert.SerializeObject(restroom);
+            var json = JsonConvert.SerializeObject(review);
             var content =
                 new StringContent(json, Encoding.UTF8, "application/json");
 
             var response = await client.PostAsync("api/Restroom", content);
 
-            if(!response.IsSuccessStatusCode)
+            if (!response.IsSuccessStatusCode)
             {
 
             }
         }
 
-        public static async Task RemovePinAsync(int id)
+        public static async Task RemoveReviewAsync(int id)
         {
             var response = await client.DeleteAsync($"api/Restroom/{id}");
             if (!response.IsSuccessStatusCode)
@@ -70,18 +67,11 @@ namespace Dook.Services
             }
         }
 
-        public static async Task<IEnumerable<Restroom>> GetPinAsync()
+        public static async Task<IEnumerable<Review>> GetReviewAsync()
         {
             var json = await client.GetStringAsync("api/Restroom");
-            var restrooms = JsonConvert.DeserializeObject<IEnumerable<Restroom>>(json);
-            return restrooms;
-        }
-
-        public static async Task<Restroom> GetSingularPinAsync(int id)
-        {
-            var json = await client.GetStringAsync($"api/Restroom/{id}");
-            var restroom = JsonConvert.DeserializeObject<Restroom>(json);
-            return restroom;
+            var reviews = JsonConvert.DeserializeObject<IEnumerable<Review>>(json);
+            return reviews;
         }
     }
 }
