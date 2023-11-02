@@ -12,7 +12,7 @@ namespace Dook.Services
     public static class InternetRestroomService
     {
         //static string Baseurl = DeviceInfo.Platform == DevicePlatform.Android ?
-        //                                    "http://10.0.2.2:5000" : "http://localhost:5000";
+        //                                    "http://10.0.2.2:5000" : "https://localhost:7151";
         static string BaseUrl = "https://dookwebapp.azurewebsites.net/";
         static HttpClient client;
 

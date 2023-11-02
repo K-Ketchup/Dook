@@ -36,8 +36,8 @@ namespace Dook.ViewModel
             var text = await App.Current.MainPage.DisplayPromptAsync("Text", "Add text", maxLength: 50);
             rID = restId;
             if (username == null || stars == null || text == null) { return; }
-            await InternetReviewService.AddReviewAsync(username, Double.Parse(stars), text, Int32.Parse(rID));
-            await RefreshAsync(rID);
+            await InternetReviewService.AddReviewAsync(username, Double.Parse(stars), text, Int32.Parse(restId));
+            await RefreshAsync(restId);
         }
         async Task RemoveAsync(Review review)
         {
@@ -51,6 +51,11 @@ namespace Dook.ViewModel
             await Task.Delay(2000);
             Review.Clear();
             var reviews = await InternetReviewService.GetReviewAsync(Int32.Parse(restId));
+            if (reviews == null) 
+            {
+                IsBusy = false;
+                return; 
+            }
             Review.AddRange(reviews);
             IsBusy = false;
         }
