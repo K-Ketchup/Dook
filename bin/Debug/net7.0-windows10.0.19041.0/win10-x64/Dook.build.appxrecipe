@@ -700,12 +700,6 @@
     <AppxPackagedFile Include="C:\Users\yoboi\.nuget\packages\microsoft.windowsappsdk\1.2.221209.1\lib\net6.0-windows10.0.18362.0\Microsoft.WindowsAppRuntime.Bootstrap.Net.dll">
       <PackagePath>Microsoft.WindowsAppRuntime.Bootstrap.Net.dll</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\yoboi\.nuget\packages\monkeycache\2.0.1\lib\net6.0-windows10.0.19041\MonkeyCache.dll">
-      <PackagePath>MonkeyCache.dll</PackagePath>
-    </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\yoboi\.nuget\packages\monkeycache.filestore\2.0.1\lib\net6.0\MonkeyCache.FileStore.dll">
-      <PackagePath>MonkeyCache.FileStore.dll</PackagePath>
-    </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\yoboi\.nuget\packages\newtonsoft.json\13.0.3\lib\net6.0\Newtonsoft.Json.dll">
       <PackagePath>Newtonsoft.Json.dll</PackagePath>
     </AppxPackagedFile>
@@ -765,6 +759,9 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\yoboi\source\repos\Dook\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\resizetizer\sp\splashSplashScreen.scale-400.png">
       <PackagePath>splashSplashScreen.scale-400.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\yoboi\source\repos\Dook\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\resizetizer\f\materialdesignicons-webfont.ttf">
+      <PackagePath>materialdesignicons-webfont.ttf</PackagePath>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\yoboi\source\repos\Dook\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\resizetizer\f\OpenSans-Regular.ttf">
       <PackagePath>OpenSans-Regular.ttf</PackagePath>
@@ -910,6 +907,9 @@
     <AppxPackagedFile Include="C:\Users\yoboi\source\repos\Dook\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\resizetizer\r\appiconWideTile.scale-400.png">
       <PackagePath>appiconWideTile.scale-400.png</PackagePath>
     </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\yoboi\source\repos\Dook\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\resizetizer\r\dook_toilet.scale-100.png">
+      <PackagePath>dook_toilet.scale-100.png</PackagePath>
+    </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\yoboi\source\repos\Dook\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\resizetizer\r\dotnet_bot.scale-100.png">
       <PackagePath>dotnet_bot.scale-100.png</PackagePath>
     </AppxPackagedFile>
@@ -927,6 +927,9 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\yoboi\source\repos\Dook\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\resizetizer\r\feather_navigation_icon.scale-100.png">
       <PackagePath>feather_navigation_icon.scale-100.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\yoboi\source\repos\Dook\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\resizetizer\r\feather_refresh_icon.scale-100.png">
+      <PackagePath>feather_refresh_icon.scale-100.png</PackagePath>
     </AppxPackagedFile>
   </ItemGroup>
   <ItemGroup>
