@@ -70,7 +70,6 @@
             HorizontalOptions="Center"
             VerticalOptions="Center"
             />
-
     </Grid>
 
 </ContentPage>

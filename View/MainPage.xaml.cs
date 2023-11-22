@@ -13,8 +13,6 @@ public partial class MainPage : ContentPage
 	public MainPage()
 	{
         InitializeComponent();
-        MoveMapLocation();
-        PopulateMapAsync();
     }
 
     private void GoToLocation_Button(object sender, EventArgs e)
@@ -70,6 +68,12 @@ public partial class MainPage : ContentPage
 
             mainmap.Pins.Add(pin);
         }
+    }
+
+    protected override async void OnAppearing()
+    {
+        MoveMapLocation();
+        PopulateMapAsync();
     }
 }
 

@@ -9,9 +9,11 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Web", "Web", "{500C5B3E-16F
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Shared", "Shared", "{A43865DB-FC09-4586-B792-5EC196D0A19B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dook.Shared", "..\Dook.Shared\Dook.Shared.csproj", "{799CE312-9C79-4EB0-B476-D144D3DEC602}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Dook.Shared", "..\Dook.Shared\Dook.Shared.csproj", "{799CE312-9C79-4EB0-B476-D144D3DEC602}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dook.WebAPI", "..\Dook.WebAPI\Dook.WebAPI.csproj", "{753C1F36-EEB4-4618-91A2-F11C8207765B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Dook.WebAPI2", "..\Dook.WebAPI\Dook.WebAPI2.csproj", "{753C1F36-EEB4-4618-91A2-F11C8207765B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dook.ASPCoreWebAPI", "..\Dook.ASPCoreWebAPI\Dook.ASPCoreWebAPI.csproj", "{E40391D4-0A12-414C-A871-9C5A132FEA32}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +35,10 @@ Global
 		{753C1F36-EEB4-4618-91A2-F11C8207765B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{753C1F36-EEB4-4618-91A2-F11C8207765B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{753C1F36-EEB4-4618-91A2-F11C8207765B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E40391D4-0A12-414C-A871-9C5A132FEA32}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E40391D4-0A12-414C-A871-9C5A132FEA32}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E40391D4-0A12-414C-A871-9C5A132FEA32}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E40391D4-0A12-414C-A871-9C5A132FEA32}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -40,6 +46,7 @@ Global
 	GlobalSection(NestedProjects) = preSolution
 		{799CE312-9C79-4EB0-B476-D144D3DEC602} = {A43865DB-FC09-4586-B792-5EC196D0A19B}
 		{753C1F36-EEB4-4618-91A2-F11C8207765B} = {500C5B3E-16F5-4C8F-BBAA-4B876C2FBCDB}
+		{E40391D4-0A12-414C-A871-9C5A132FEA32} = {500C5B3E-16F5-4C8F-BBAA-4B876C2FBCDB}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {61F7FB11-1E47-470C-91E2-47F8143E1572}

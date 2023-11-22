@@ -12,20 +12,12 @@
     <ContentPage.BindingContext>
         <viewmodel:InternetRestroomDetailViewModel/>
     </ContentPage.BindingContext>
-    
+
     <ContentPage.Resources>
         <ResourceDictionary>
             <toolkit:SelectedItemEventArgsConverter x:Key="SelectedItemEventArgsConverter"/>
         </ResourceDictionary>
     </ContentPage.Resources>
-
-    <!--<ContentPage.ToolbarItems>
-        <ToolbarItem 
-            BindingContext="{Binding Source={viewmodel:InternetRestroomDetailViewModel}}"
-            Text="Add" 
-            x:DataType="viewmodel:InternetRestroomDetailViewModel"
-            Command="{Binding AddCommand}"/>
-    </ContentPage.ToolbarItems>-->
 
     <VerticalStackLayout>
         <Frame 
