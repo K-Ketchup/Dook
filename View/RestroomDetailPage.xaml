@@ -62,7 +62,6 @@
             IsPullToRefreshEnabled="True"
             IsRefreshing="{Binding IsBusy, Mode=OneWay}"
             ItemsSource="{Binding Review}"
-            RefreshCommand="{Binding RefreshCommand}"
             RefreshControlColor="#37A7FC"
             SelectionMode="None"
             SeparatorVisibility="None"
