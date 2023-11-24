@@ -27,11 +27,10 @@ public partial class RestroomDetailPage : ContentPage
         };
         this.ToolbarItems.Add(item);
 
-		ICommand refreshCommand = new Command(() =>
+		ICommand refreshCommand = new Command(async () =>
 		{
 			if (vm.RefreshCommand.CanExecute(restroom.Id.ToString()))
 				vm.RefreshCommand.ExecuteAsync(restroom.Id.ToString());
-			
 		});
 		ReviewList.RefreshCommand = refreshCommand;
 	}

@@ -62,7 +62,6 @@
             IsPullToRefreshEnabled="True"
             IsRefreshing="{Binding IsBusy, Mode=OneWay}"
             ItemsSource="{Binding Review}"
-            RefreshCommand="{Binding RefreshCommand}"
             RefreshControlColor="#37A7FC"
             SelectionMode="None"
             SeparatorVisibility="None"
@@ -75,7 +74,8 @@
                     <ViewCell>
                         <ViewCell.ContextActions>
                             <ToolbarItem
-                                Command="{Binding RemoveCommand, Source={viewmodel:InternetRestroomDetailViewModel}}"
+                                x:DataType="viewmodel:InternetRestroomDetailViewModel"
+                                Command="{Binding RemoveCommand}"
                                 CommandParameter="{Binding .}"
                                 IsDestructive="True"
                                 Text="Delete" />
