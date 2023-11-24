@@ -54,26 +54,20 @@ namespace Dook.Services
             var response = await client.PostAsync("api/Review", content);
 
             if (!response.IsSuccessStatusCode)
-            {
-
-            }
+                Debug.WriteLine("Response Success!");
         }
 
         public static async Task RemoveReviewAsync(int id)
         {
             var response = await client.DeleteAsync($"api/Review/{id}");
             if (!response.IsSuccessStatusCode)
-            {
-
-            }
+                Debug.WriteLine("Response Success!");
         }
 
         public static async Task<IEnumerable<Review>> GetReviewAsync(int restId)
         {
             try
             {
-                var endpointUrl = $"https://dookwebapp.azurewebsites.net/api/Review/GetList/{restId}";
-                Console.WriteLine("Endpoint URL: " + endpointUrl);
                 var json = await client.GetStringAsync($"api/Review/GetList/{restId}");
                 Console.WriteLine(json);
                 var reviews = JsonConvert.DeserializeObject<IEnumerable<Review>>(json);
@@ -83,7 +77,6 @@ namespace Dook.Services
             {
                 Console.WriteLine($"HTTP request failed: {ex.Message}");
                 return Enumerable.Empty<Review>();
-                // Handle the exception as needed
             }
         }
     }

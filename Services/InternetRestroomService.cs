@@ -12,7 +12,7 @@ namespace Dook.Services
     public static class InternetRestroomService
     {
         //static string Baseurl = DeviceInfo.Platform == DevicePlatform.Android ?
-        //                                    "http://10.0.2.2:5000" : "https://localhost:7151";
+        //                                    "http://10.0.2.2:5000" : "https://localhost:5000";
         static string BaseUrl = "https://dookwebapp.azurewebsites.net/";
         static HttpClient client;
 
@@ -29,14 +29,14 @@ namespace Dook.Services
         public static async Task AddPinAsync(string name, string address, string username, double latitude, double longitude)
         {
             //Check to see if ID is a duplicate
-            int idNum = random.Next(0, 100000);
-            var randomRestroom = await client.GetStringAsync($"api/Restroom/{idNum}");
+            int id = random.Next(0, 100000);
+            var randomRestroom = await client.GetStringAsync($"api/Restroom/{id}");
             Debug.Write(randomRestroom);
 
             while (randomRestroom != "")
             {
-                idNum = random.Next(0, 100000);
-                randomRestroom = await client.GetStringAsync($"api/Restroom/{idNum}");
+                id = random.Next(0, 100000);
+                randomRestroom = await client.GetStringAsync($"api/Restroom/{id}");
             }
 
             var restroom = new Restroom
@@ -46,7 +46,7 @@ namespace Dook.Services
                 Username = username,
                 Latitude = latitude,
                 Longitude = longitude,
-                Id = idNum
+                Id = id
             };
 
             var json = JsonConvert.SerializeObject(restroom);
@@ -56,18 +56,14 @@ namespace Dook.Services
             var response = await client.PostAsync("api/Restroom", content);
 
             if(!response.IsSuccessStatusCode)
-            {
-
-            }
+                Debug.WriteLine("Response Success!");
         }
 
         public static async Task RemovePinAsync(int id)
         {
             var response = await client.DeleteAsync($"api/Restroom/{id}");
             if (!response.IsSuccessStatusCode)
-            {
-
-            }
+                Debug.WriteLine("Response Success!");
         }
 
         public static async Task<IEnumerable<Restroom>> GetPinAsync()
