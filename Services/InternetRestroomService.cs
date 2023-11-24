@@ -6,6 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
+using System.Net;
 
 namespace Dook.Services
 {
@@ -28,35 +29,35 @@ namespace Dook.Services
 
         public static async Task AddPinAsync(string name, string address, string username, double latitude, double longitude)
         {
-            //Check to see if ID is a duplicate
             int id = random.Next(0, 100000);
-            var randomRestroom = await client.GetStringAsync($"api/Restroom/{id}");
-            Debug.Write(randomRestroom);
 
-            while (randomRestroom != "")
+            try
             {
-                id = random.Next(0, 100000);
-                randomRestroom = await client.GetStringAsync($"api/Restroom/{id}");
+                //Check to see if ID is a duplicate. If exception 404 returns, the id is safe.
+                var randomRestroom = await client.GetStringAsync($"api/Restroom/{id}");
+                await AddPinAsync(name, address, username, latitude, longitude);
             }
-
-            var restroom = new Restroom
+            catch(HttpRequestException ex)
             {
-                Name = name,
-                Address = address,
-                Username = username,
-                Latitude = latitude,
-                Longitude = longitude,
-                Id = id
-            };
+                var restroom = new Restroom
+                {
+                    Name = name,
+                    Address = address,
+                    Username = username,
+                    Latitude = latitude,
+                    Longitude = longitude,
+                    Id = id
+                };
 
-            var json = JsonConvert.SerializeObject(restroom);
-            var content =
-                new StringContent(json, Encoding.UTF8, "application/json");
+                var json = JsonConvert.SerializeObject(restroom);
+                var content =
+                    new StringContent(json, Encoding.UTF8, "application/json");
 
-            var response = await client.PostAsync("api/Restroom", content);
+                var response = await client.PostAsync("api/Restroom", content);
 
-            if(!response.IsSuccessStatusCode)
-                Debug.WriteLine("Response Success!");
+                if (!response.IsSuccessStatusCode)
+                    Debug.WriteLine("Response Success!");
+            }
         }
 
         public static async Task RemovePinAsync(int id)

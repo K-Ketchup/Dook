@@ -51,12 +51,14 @@ namespace Dook.ViewModel
             await Task.Delay(2000);
             Review.Clear();
             var reviews = await InternetReviewService.GetReviewAsync(Int32.Parse(restId));
-            if (reviews == null) 
+            try
             {
-                IsBusy = false;
-                return; 
+                Review.AddRange(reviews);
             }
-            Review.AddRange(reviews);
+            catch(Exception ex) 
+            {
+                Debug.WriteLine(ex.Message);
+            }
             IsBusy = false;
         }
     }

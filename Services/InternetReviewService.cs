@@ -28,33 +28,34 @@ namespace Dook.Services
 
         public static async Task AddReviewAsync(string username, double stars, string text, int restroomid)
         {
-            //Check to see if ID is a duplicate
             int idNum = random.Next(0, 100000);
-            var randomReview = await client.GetStringAsync($"api/Review/{idNum}");
 
-            while (randomReview != "")
+            try
             {
-                idNum = random.Next(0, 100000);
-                randomReview = await client.GetStringAsync($"api/Review/{idNum}");
+                //Check to see if ID is a duplicate
+                var randomReview = await client.GetStringAsync($"api/Review/Individual/{idNum}");
+                await AddReviewAsync(username, stars, text, restroomid);
             }
-
-            var review = new Review()
+            catch(HttpRequestException ex)
             {
-                Username = username,
-                Stars = stars,
-                Text = text,
-                Id = idNum,
-                RestroomId = restroomid 
-            };
+                var review = new Review()
+                {
+                    Username = username,
+                    Stars = stars,
+                    Text = text,
+                    Id = idNum,
+                    RestroomId = restroomid
+                };
 
-            var json = JsonConvert.SerializeObject(review);
-            var content =
-                new StringContent(json, Encoding.UTF8, "application/json");
+                var json = JsonConvert.SerializeObject(review);
+                var content =
+                    new StringContent(json, Encoding.UTF8, "application/json");
 
-            var response = await client.PostAsync("api/Review", content);
+                var response = await client.PostAsync("api/Review", content);
 
-            if (!response.IsSuccessStatusCode)
-                Debug.WriteLine("Response Success!");
+                if (!response.IsSuccessStatusCode)
+                    Debug.WriteLine("Response Success!");
+            }
         }
 
         public static async Task RemoveReviewAsync(int id)
@@ -68,7 +69,7 @@ namespace Dook.Services
         {
             try
             {
-                var json = await client.GetStringAsync($"api/Review/GetList/{restId}");
+                var json = await client.GetStringAsync($"api/Review/List/{restId}");
                 Console.WriteLine(json);
                 var reviews = JsonConvert.DeserializeObject<IEnumerable<Review>>(json);
                 return reviews;
