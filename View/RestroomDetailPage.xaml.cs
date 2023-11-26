@@ -39,7 +39,6 @@ public partial class RestroomDetailPage : ContentPage
 	{
 		base.OnAppearing();
 		int.TryParse(RestroomId, out var result);
-
 		restroom = await InternetRestroomService.GetSingularPinAsync(result);
 		BindingContext = restroom;
 	}
