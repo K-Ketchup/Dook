@@ -39,7 +39,11 @@ public partial class RestroomDetailPage : ContentPage
 	{
 		base.OnAppearing();
 		int.TryParse(RestroomId, out var result);
+
 		restroom = await InternetRestroomService.GetSingularPinAsync(result);
-		BindingContext = restroom;
-	}
+        NameLabel.Text = restroom.Name;
+        AddressLabel.Text = restroom.Address;
+        UsernameLabel.Text = "Registered By: " + restroom.Username;
+		Title = restroom.Name;
+    }
 }

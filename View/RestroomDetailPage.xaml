@@ -6,8 +6,7 @@
              xmlns:controls="clr-namespace:Dook.Controls"
              xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
              x:Class="Dook.View.RestroomDetailPage"
-             x:Name="RestroomPage"
-             Title="Pin">
+             x:Name="RestroomPage">
 
     <ContentPage.BindingContext>
         <viewmodel:InternetRestroomDetailViewModel/>
@@ -39,23 +38,21 @@
 
         <Label 
             x:DataType="model:Restroom"
-            Text="{Binding Name}"
+            x:Name="NameLabel"
             FontSize="23"
             HorizontalOptions="Center"/>
         <Label 
             x:DataType="model:Restroom"
-            Text="{Binding Address}"
+            x:Name="AddressLabel"
             FontSize="18"
             HorizontalOptions="Center"/>
         <Label 
             x:DataType="model:Restroom"
-            Text="{Binding Username, StringFormat='Registered by: {0}'}"
+            x:Name="UsernameLabel"
             HorizontalOptions="Center"
             FontSize="18"/>
 
         <ListView
-            x:DataType="viewmodel:InternetRestroomDetailViewModel"
-            BindingContext="{Binding Source={viewmodel:InternetRestroomDetailViewModel}}"
             BackgroundColor="LightGray"
             CachingStrategy="RecycleElement"
             HasUnevenRows="True"
