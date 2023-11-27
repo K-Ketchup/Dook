@@ -277,12 +277,12 @@ C:\Users\yoboi\source\repos\Dook\obj\Debug\net7.0-ios\ios-arm64\resizetizer\r\As
 C:\Users\yoboi\source\repos\Dook\obj\Debug\net7.0-ios\ios-arm64\resizetizer\r\Assets.xcassets\appicon.appiconset\appicon83.5x83.5@2x.png
 C:\Users\yoboi\source\repos\Dook\obj\Debug\net7.0-ios\ios-arm64\resizetizer\r\Assets.xcassets\appicon.appiconset\appiconItunesArtwork.png
 C:\Users\yoboi\source\repos\Dook\obj\Debug\net7.0-ios\ios-arm64\resizetizer\r\Assets.xcassets\appicon.appiconset\Contents.json
-C:\Users\yoboi\source\repos\Dook\obj\Debug\net7.0-ios\ios-arm64\resizetizer\r\dotnet_bot.png
-C:\Users\yoboi\source\repos\Dook\obj\Debug\net7.0-ios\ios-arm64\resizetizer\r\dotnet_bot@2x.png
-C:\Users\yoboi\source\repos\Dook\obj\Debug\net7.0-ios\ios-arm64\resizetizer\r\dotnet_bot@3x.png
 C:\Users\yoboi\source\repos\Dook\obj\Debug\net7.0-ios\ios-arm64\resizetizer\r\Resources\dook_toilet.png
 C:\Users\yoboi\source\repos\Dook\obj\Debug\net7.0-ios\ios-arm64\resizetizer\r\Resources\feather_navigation_icon.png
+C:\Users\yoboi\source\repos\Dook\obj\Debug\net7.0-ios\ios-arm64\resizetizer\r\Resources\feather_navigation_icon_badwhite.png
 C:\Users\yoboi\source\repos\Dook\obj\Debug\net7.0-ios\ios-arm64\resizetizer\r\Resources\feather_refresh_icon.png
+C:\Users\yoboi\source\repos\Dook\obj\Debug\net7.0-ios\ios-arm64\resizetizer\r\Resources\feather_refresh_icon_badwhite.png
+C:\Users\yoboi\source\repos\Dook\obj\Debug\net7.0-ios\ios-arm64\resizetizer\r\Resources\feather_search_icon_badwhite.png
 C:\Users\yoboi\source\repos\Dook\obj\Debug\net7.0-ios\ios-arm64\resizetizer\r\splash.png
 C:\Users\yoboi\source\repos\Dook\obj\Debug\net7.0-ios\ios-arm64\resizetizer\r\splash@2x.png
 C:\Users\yoboi\source\repos\Dook\obj\Debug\net7.0-ios\ios-arm64\resizetizer\r\splash@3x.png
@@ -315,6 +315,3 @@ C:\Users\yoboi\source\repos\Dook\obj\Debug\net7.0-ios\ios-arm64\refint\Dook.dll
 C:\Users\yoboi\source\repos\Dook\obj\Debug\net7.0-ios\ios-arm64\Dook.pdb
 C:\Users\yoboi\source\repos\Dook\obj\Debug\net7.0-ios\ios-arm64\Dook.genruntimeconfig.cache
 C:\Users\yoboi\source\repos\Dook\obj\Debug\net7.0-ios\ios-arm64\ref\Dook.dll
-C:\Users\yoboi\source\repos\Dook\obj\Debug\net7.0-ios\ios-arm64\resizetizer\r\Resources\feather_navigation_icon_badwhite.png
-C:\Users\yoboi\source\repos\Dook\obj\Debug\net7.0-ios\ios-arm64\resizetizer\r\Resources\feather_refresh_icon_badwhite.png
-C:\Users\yoboi\source\repos\Dook\obj\Debug\net7.0-ios\ios-arm64\resizetizer\r\Resources\feather_search_icon_badwhite.png

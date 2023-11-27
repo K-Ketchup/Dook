@@ -38,8 +38,15 @@ namespace Dook.ViewModel
         async Task AddAsync(Location pinlocation)
         {
             var name = await App.Current.MainPage.DisplayPromptAsync("Location Name", "Name of Location");
-            // var address = "Latitude: {pinlocation.Latitude}, Longitude: {pinlocation.Longitude}, Altitude: {location.Altitude}";
-            var address = "test";
+            var address = "Latitude: {pinlocation.Latitude}, Longitude: {pinlocation.Longitude}, Altitude: {location.Altitude}";
+            IEnumerable<Placemark> pms = await Geocoding.Default.GetPlacemarksAsync(pinlocation.Latitude, pinlocation.Longitude);
+            Placemark placemark = pms?.FirstOrDefault();
+            if(placemark != null)
+            {
+                //address = placemark.SubAdminArea; ex Los Angeles County
+                //address = placemark.SubLocality; ex Silver Spur
+                address = placemark.FeatureName + ", " + placemark.Locality + ", " + placemark.AdminArea + " " + placemark.PostalCode + ", " + placemark.CountryName;
+            }
             var username = await App.Current.MainPage.DisplayPromptAsync("Username", "Username of Toilet Adder");
             var latitude = pinlocation.Latitude;
             var longitude = pinlocation.Longitude;

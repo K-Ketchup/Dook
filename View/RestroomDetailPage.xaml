@@ -40,17 +40,20 @@
             x:DataType="model:Restroom"
             x:Name="NameLabel"
             FontSize="23"
+            Padding="5"
             HorizontalOptions="Center"/>
         <Label 
             x:DataType="model:Restroom"
             x:Name="AddressLabel"
             FontSize="18"
+            Padding="5"
             HorizontalOptions="Center"/>
         <Label 
             x:DataType="model:Restroom"
             x:Name="UsernameLabel"
             HorizontalOptions="Center"
-            FontSize="18"/>
+            FontSize="18"
+            Padding="5"/>
 
         <ListView
             BackgroundColor="Transparent"
