@@ -53,7 +53,7 @@
             FontSize="18"/>
 
         <ListView
-            BackgroundColor="LightGray"
+            BackgroundColor="Transparent"
             CachingStrategy="RecycleElement"
             HasUnevenRows="True"
             IsPullToRefreshEnabled="True"
@@ -62,23 +62,28 @@
             RefreshControlColor="#37A7FC"
             SelectionMode="None"
             SeparatorVisibility="None"
-            WidthRequest="340"
-            HeightRequest="350"
+            WidthRequest="380"
+            HeightRequest="390"
             x:Name="ReviewList"
             Margin="10">
             <ListView.ItemTemplate>
-                <DataTemplate x:DataType="model:Review">
+                <DataTemplate>
                     <ViewCell>
                         <ViewCell.ContextActions>
                             <ToolbarItem
                                 x:DataType="viewmodel:InternetRestroomDetailViewModel"
-                                Command="{Binding RemoveCommand}"
+                                Command="{Binding RemoveCommand, Source={viewmodel:InternetRestroomDetailViewModel}}"
                                 CommandParameter="{Binding .}"
                                 IsDestructive="True"
                                 Text="Delete" />
                         </ViewCell.ContextActions>
                         <Grid Padding="10">
-                            <Frame CornerRadius="20" HasShadow="True">
+                            <Frame 
+                                x:DataType="model:Review"
+                                CornerRadius="20" 
+                                HasShadow="True"
+                                BackgroundColor="White"
+                                BorderColor="#37A7FC">
                                 <StackLayout Orientation="Horizontal">
                                     <StackLayout VerticalOptions="Center">
                                         <Label
@@ -88,7 +93,7 @@
                                         <controls:RatingControl 
                                             Amount="5"
                                             CurrentValue="{Binding Stars}"
-                                            AccentColor="Yellow"
+                                            AccentColor="#37A7FC"
                                             StarSize="36" 
                                             VerticalOptions="End" />
                                         <Label

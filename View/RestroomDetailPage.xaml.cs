@@ -45,5 +45,9 @@ public partial class RestroomDetailPage : ContentPage
         AddressLabel.Text = restroom.Address;
         UsernameLabel.Text = "Registered By: " + restroom.Username;
 		Title = restroom.Name;
+
+        var vm = (InternetRestroomDetailViewModel)this.BindingContext;
+        if (vm.RefreshCommand.CanExecute(restroom.Id.ToString()))
+            vm.RefreshCommand.ExecuteAsync(restroom.Id.ToString());
     }
 }
