@@ -1,0 +1,3 @@
+[submodule "Dook"]
+	path = Dook
+	url = https://github.com/K-Ketchup/Dook.git
