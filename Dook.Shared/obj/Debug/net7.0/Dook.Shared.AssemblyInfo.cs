@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Dook.Shared")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+92d74bd3dae712b253ef780cafbe4bcc3a9568c3")]
 [assembly: System.Reflection.AssemblyProductAttribute("Dook.Shared")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Dook.Shared")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

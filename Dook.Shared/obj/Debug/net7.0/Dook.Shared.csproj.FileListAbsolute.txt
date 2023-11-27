@@ -6,6 +6,7 @@ C:\Users\yoboi\source\repos\Dook.Shared\obj\Debug\net7.0\Dook.Shared.GeneratedMS
 C:\Users\yoboi\source\repos\Dook.Shared\obj\Debug\net7.0\Dook.Shared.AssemblyInfoInputs.cache
 C:\Users\yoboi\source\repos\Dook.Shared\obj\Debug\net7.0\Dook.Shared.AssemblyInfo.cs
 C:\Users\yoboi\source\repos\Dook.Shared\obj\Debug\net7.0\Dook.Shared.csproj.CoreCompileInputs.cache
+C:\Users\yoboi\source\repos\Dook.Shared\obj\Debug\net7.0\Dook.Shared.sourcelink.json
 C:\Users\yoboi\source\repos\Dook.Shared\obj\Debug\net7.0\Dook.Shared.dll
 C:\Users\yoboi\source\repos\Dook.Shared\obj\Debug\net7.0\refint\Dook.Shared.dll
 C:\Users\yoboi\source\repos\Dook.Shared\obj\Debug\net7.0\Dook.Shared.pdb

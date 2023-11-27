@@ -1,3 +1,0 @@
-﻿<Project>
-  <Import Project="..\build\Dook.ASPCoreWebAPI.props" />
-</Project>

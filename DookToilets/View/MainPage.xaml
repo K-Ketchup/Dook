@@ -1,0 +1,82 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:viewmodel="clr-namespace:DookToilets.ViewModel"
+             x:DataType="viewmodel:MainViewModel"
+             xmlns:maps="clr-namespace:Microsoft.Maui.Controls.Maps;assembly=Microsoft.Maui.Controls.Maps"
+             xmlns:sensors="clr-namespace:Microsoft.Maui.Devices.Sensors;assembly=Microsoft.Maui.Essentials"
+             xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+             xmlns:model="clr-namespace:DookToilets.Model"
+             x:Class="DookToilets.MainPage"
+             Title="{Binding Title}"
+             Shell.NavBarIsVisible="False">
+
+    <ContentPage.BindingContext>
+        <viewmodel:MainViewModel />
+    </ContentPage.BindingContext>
+
+    <Grid
+        Margin="0"
+        RowDefinitions="*, Auto"
+        ColumnDefinitions="*">
+
+        <maps:Map
+            x:Name="mainmap"
+            MapType="Street"
+            IsShowingUser="True"
+            x:FieldModifier="public"
+            HorizontalOptions="FillAndExpand"
+            VerticalOptions="FillAndExpand"
+            IsVisible="True"
+            IsEnabled="True"
+            Grid.Row="0"
+            MapClicked="OnMapClicked"
+            ItemsSource="{Binding Restroom}">
+
+            <maps:Map.ItemTemplate>
+                <DataTemplate x:DataType="model:Restroom">
+                    <maps:Pin
+                        Label="{Binding Name}"
+                        Address="{Binding Address}"
+                        Type="Generic"
+                        Location="{Binding Latitude}, {Binding Longitude}">
+                        <!--<maps:Pin.Location>
+                            <sensors:Location>
+                                <x:Arguments>
+                                    <x:Double
+                                        x:Arguments="{Binding Latitude}">
+
+                                    </x:Double>
+                                </x:Arguments>
+                            </sensors:Location>
+                        </maps:Pin.Location>-->
+                    </maps:Pin>
+                </DataTemplate>
+            </maps:Map.ItemTemplate>
+        </maps:Map>
+
+        <Button
+            Text="Refresh"
+            IsEnabled="{Binding IsNotBusy}"
+            Clicked="RefreshButton_Clicked"
+            Margin="5"
+            VerticalOptions="Center"
+            HorizontalOptions="Start"
+            Grid.Row="1"/>
+
+        <ImageButton
+            Source="feather_navigation_icon.png"
+            Aspect="AspectFill"
+            Clicked="GoToLocation_Button" 
+            IsEnabled="{Binding IsNotBusy}"
+            Margin="20"
+            VerticalOptions="End"
+            HorizontalOptions="End"
+            WidthRequest="13"
+            HeightRequest="13"
+            BackgroundColor="Transparent"
+            CornerRadius="10"
+            Grid.Row="0"/>
+    </Grid>
+
+</ContentPage>
