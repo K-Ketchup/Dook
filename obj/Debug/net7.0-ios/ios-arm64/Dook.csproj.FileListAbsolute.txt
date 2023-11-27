@@ -315,3 +315,6 @@ C:\Users\yoboi\source\repos\Dook\obj\Debug\net7.0-ios\ios-arm64\refint\Dook.dll
 C:\Users\yoboi\source\repos\Dook\obj\Debug\net7.0-ios\ios-arm64\Dook.pdb
 C:\Users\yoboi\source\repos\Dook\obj\Debug\net7.0-ios\ios-arm64\Dook.genruntimeconfig.cache
 C:\Users\yoboi\source\repos\Dook\obj\Debug\net7.0-ios\ios-arm64\ref\Dook.dll
+C:\Users\yoboi\source\repos\Dook\obj\Debug\net7.0-ios\ios-arm64\resizetizer\r\Resources\feather_navigation_icon_badwhite.png
+C:\Users\yoboi\source\repos\Dook\obj\Debug\net7.0-ios\ios-arm64\resizetizer\r\Resources\feather_refresh_icon_badwhite.png
+C:\Users\yoboi\source\repos\Dook\obj\Debug\net7.0-ios\ios-arm64\resizetizer\r\Resources\feather_search_icon_badwhite.png

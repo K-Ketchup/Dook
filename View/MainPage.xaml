@@ -11,7 +11,7 @@
              ios:Page.UseSafeArea="False"
              x:Class="Dook.MainPage"
              Shell.PresentationMode="Modal"
-             Title="Map">
+             Title="Dook (PROTOTYPE)">
     <!--Shell.NavBarIsVisible="False"-->
 
     <ContentPage.BindingContext>
@@ -39,11 +39,11 @@
         </maps:Map>
 
         <ImageButton
-            Source="feather_refresh_icon.png"
+            Source="feather_refresh_icon_badwhite.png"
             Aspect="AspectFill"
             Clicked="RefreshButton_Clicked" 
             IsEnabled="{Binding IsNotBusy}"
-            Margin="40"
+            Margin="55"
             VerticalOptions="End"
             HorizontalOptions="Start"
             WidthRequest="20"
@@ -52,11 +52,23 @@
             Grid.Row="0"/>
 
         <ImageButton
-            Source="feather_navigation_icon.png"
+            Source="feather_search_icon_badwhite.png"
             Aspect="AspectFill"
-            Clicked="GoToLocation_Button" 
+            Clicked="SearchButton_Clicked"
             IsEnabled="{Binding IsNotBusy}"
-            Margin="40"
+            Margin="55"
+            VerticalOptions="End"
+            HorizontalOptions="Center"
+            WidthRequest="30"
+            HeightRequest="30"
+            CornerRadius="10"/>
+        
+        <ImageButton
+            Source="feather_navigation_icon_badwhite.png"
+            Aspect="AspectFill"
+            Clicked="GoToLocationButton_Clicked" 
+            IsEnabled="{Binding IsNotBusy}"
+            Margin="55"
             VerticalOptions="End"
             HorizontalOptions="End"
             WidthRequest="20"
