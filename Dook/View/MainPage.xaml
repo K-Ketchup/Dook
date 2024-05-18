@@ -1,0 +1,76 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:viewmodel="clr-namespace:Dook.ViewModel"
+             x:DataType="viewmodel:InternetMainViewModel"
+             xmlns:maps="clr-namespace:Microsoft.Maui.Controls.Maps;assembly=Microsoft.Maui.Controls.Maps"
+             xmlns:sensors="clr-namespace:Microsoft.Maui.Devices.Sensors;assembly=Microsoft.Maui.Essentials"
+             xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+             xmlns:model="clr-namespace:Dook.Shared.Models;assembly=Dook.Shared"
+             xmlns:ios="clr-namespace:Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;assembly=Microsoft.Maui.Controls"
+             ios:Page.UseSafeArea="False"
+             x:Class="Dook.MainPage"
+             Shell.PresentationMode="Modal"
+             Title="Map">
+    <!--Shell.NavBarIsVisible="False"-->
+
+    <ContentPage.BindingContext>
+        <viewmodel:InternetMainViewModel />
+    </ContentPage.BindingContext>
+
+    <Grid
+        Margin="0"
+        RowDefinitions="*, Auto"
+        ColumnDefinitions="*">
+
+        <maps:Map
+            x:Name="mainmap"
+            MapType="Street"
+            IsShowingUser="True"
+            x:FieldModifier="public"
+            HorizontalOptions="FillAndExpand"
+            VerticalOptions="FillAndExpand"
+            IsVisible="True"
+            IsEnabled="True"
+            Grid.Row="0"
+            MapClicked="OnMapClicked"
+            ItemsSource="{Binding Restroom}"
+            MinimumHeightRequest="2000">
+        </maps:Map>
+
+        <ImageButton
+            Source="feather_refresh_icon.png"
+            Aspect="AspectFill"
+            Clicked="RefreshButton_Clicked" 
+            IsEnabled="{Binding IsNotBusy}"
+            Margin="40"
+            VerticalOptions="End"
+            HorizontalOptions="Start"
+            WidthRequest="20"
+            HeightRequest="20"
+            CornerRadius="10"
+            Grid.Row="0"/>
+
+        <ImageButton
+            Source="feather_navigation_icon.png"
+            Aspect="AspectFill"
+            Clicked="GoToLocation_Button" 
+            IsEnabled="{Binding IsNotBusy}"
+            Margin="40"
+            VerticalOptions="End"
+            HorizontalOptions="End"
+            WidthRequest="20"
+            HeightRequest="20"
+            CornerRadius="10"
+            Grid.Row="0"/>
+
+        <ActivityIndicator 
+            IsVisible="{Binding IsBusy}"
+            IsRunning="{Binding IsBusy}"
+            HorizontalOptions="Center"
+            VerticalOptions="Center"
+            />
+    </Grid>
+
+</ContentPage>
+    
