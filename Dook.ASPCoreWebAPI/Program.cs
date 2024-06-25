@@ -1,8 +1,16 @@
 using Dook.ASPCoreWebAPI;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.OpenApi.Models;
+using Azure.Identity;
 
 var builder = WebApplication.CreateBuilder(args);
+
+//Update Builder config to access values stored in app config
+
+builder.Configuration.AddAzureAppConfiguration(options =>
+    options.Connect(
+        new Uri(builder.Configuration["AppConfig:Endpoint"]),
+        new ManagedIdentityCredential()));
 
 // Add services to the container.
 
