@@ -11,6 +11,6 @@
     <WebStackScaffolding_LayoutPageFile />
     <WebStackScaffolding_DbContextTypeFullName>Dook.ASPCoreWebAPI.DookWebAPIContext</WebStackScaffolding_DbContextTypeFullName>
     <WebStackScaffolding_IsAsyncSelected>False</WebStackScaffolding_IsAsyncSelected>
-    <NameOfLastUsedPublishProfile>C:\Users\yoboi\source\repos\Dook.ASPCoreWebAPI\Properties\PublishProfiles\DookWebApp - Web Deploy.pubxml</NameOfLastUsedPublishProfile>
+    <NameOfLastUsedPublishProfile>C:\Users\yoboi\source\repos\DookProjectAll\Dook.ASPCoreWebAPI\Properties\PublishProfiles\DookASPCoreWebAPI20240625120918 - Web Deploy.pubxml</NameOfLastUsedPublishProfile>
   </PropertyGroup>
 </Project>
