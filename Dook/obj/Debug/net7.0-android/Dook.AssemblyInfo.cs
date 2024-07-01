@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Dook")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0+24ba1d9ac68ce9c7319abcbbeed7b240ef1dc1c0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0+1c31fea97de4d0f4d7d1b7aded8de61812e24fe0")]
 [assembly: System.Reflection.AssemblyProductAttribute("Dook")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Dook")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
