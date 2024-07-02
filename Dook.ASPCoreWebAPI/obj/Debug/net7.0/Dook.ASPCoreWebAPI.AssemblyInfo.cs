@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Dook.ASPCoreWebAPI")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+09664d1cd255d04b8ad557988b63cd2183406368")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+a64d3d82a13aacfe401bd6a8c65e26893e52df56")]
 [assembly: System.Reflection.AssemblyProductAttribute("Dook.ASPCoreWebAPI")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Dook.ASPCoreWebAPI")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

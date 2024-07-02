@@ -9,16 +9,16 @@ var builder = WebApplication.CreateBuilder(args);
 
 //Update Builder config to access values stored in app config. Maybe should be changed for azure sql db.
 
-builder.Configuration.AddAzureAppConfiguration(options =>
-    options.Connect(
-        new Uri(builder.Configuration["AppConfig:Endpoint"]),
-        new ManagedIdentityCredential()));
+//builder.Configuration.AddAzureAppConfiguration(options =>
+//    options.Connect(
+//        new Uri(builder.Configuration["AppConfig:Endpoint"]),
+//        new ManagedIdentityCredential()));
 
 // Add services to the container. Maybe this part should be changed for azure sql db?
 
 builder.Services.AddControllers();
 builder.Services.AddDbContext<DookWebAPIContext>(opt =>
-    opt.UseInMemoryDatabase("DookWebAPIList"));
+    opt.UseSqlServer(builder.Configuration.GetConnectionString("AZURE_SQL_CONNECTIONSTRING")));
 
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
@@ -30,18 +30,21 @@ builder.Services.AddSwaggerGen(c =>
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
-if (app.Environment.IsDevelopment())
-{
-    app.UseDeveloperExceptionPage();
-    app.UseSwagger();
-    app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "Dook.ASPCoreWebAPI v1"));
-}
-else
-{
-    app.UseSwagger();
-    app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "Dook.ASPCoreWebAPI v1"));
-    app.UseHttpsRedirection();
-}
+//if (app.Environment.IsDevelopment())
+//{
+//    app.UseDeveloperExceptionPage();
+//    app.UseSwagger();
+//    app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "Dook.ASPCoreWebAPI v1"));
+//}
+//else
+//{
+//    app.UseSwagger();
+//    app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "Dook.ASPCoreWebAPI v1"));
+//    app.UseHttpsRedirection();
+//}
+
+app.UseSwagger();
+app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "Dook.ASPCoreWebAPI v1"));
 
 app.UseRouting();
 
